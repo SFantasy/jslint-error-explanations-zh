@@ -1,5 +1,5 @@
 permalink: /:title
-url: "http://jslinterrors.com"
+url: "http://jslint.fantasyshao.com"
 
 authors:
     jallardice:
@@ -19,3 +19,5 @@ authors:
     fantasyshao:
         name: Chunhua Shao
         avatar: https://gravatar.com/avatar/2709dc7185e67863cb525bc365351db4.png
+        github: SFantasy
+        twitter: forFantasy
