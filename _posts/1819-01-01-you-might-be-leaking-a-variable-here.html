@@ -5,10 +5,10 @@ tags: jshint
 author: jallardice
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSHint (version 2.1.4 and above) will throw the "You might be leaking a variable ({a}) here" error when it encounters <strong>more than one inline assignment</strong>. In this  example, we attempt to assign a string literal to the variables <span class="code">x</span>, <span class="code">y</span> and <span class="code">z</span>:
+    当产生<strong>超过一个赋值表达式时，</strong>JSHint (版本 2.1.4及以上) 会抛出 "You might be leaking a variable ({a}) here" 的错误。在下面这个例子中，我们尝试着将一个字符串字面量赋给变量 <span class="code">x</span>, <span class="code">y</span> and <span class="code">z</span>:
 </p>
 <textarea>
 function example() {
@@ -17,11 +17,11 @@ function example() {
 
 example();</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This warning is the new version of the older JSLint and JSHint message "<a href="/variable-a-was-not-declared-correctly">Variable {a} was not declared correctly</a>". It is raised under the same circumstances, so more detail may be found on the page for that message.
+    这个警告消息是原有JSLint和JSHint中"<a href="/variable-a-was-not-declared-correctly">Variable {a} was not declared correctly</a>"的另一个新版本。产生这个错误的原因和原来的是一致的，所以更多的细节可以参考该页面。
 </p>
 <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. The identifier of this warning is <strong>W120</strong>. This means you can tell JSHint to not issue this warning with the <code>/*jshint -W120 */</code> directive.
+    在JSHint 1.0.0及以上版本中你可以通过一种<a href="http://jshint.com/docs/#options" target="_blank">特殊的语法</a>来忽略所有的警告. 这个警告的ID是 <strong>W120</strong>. 这意味着你可以通过<code>/*jshint -W120 */</code>以让JSHint不再提示。
 </p>
