@@ -5,10 +5,10 @@ tags: jslint jshint
 author: jallardice
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "Wrap an immediate function invocation in parentheses" error when it encounters <strong>an immediately invoked function expression that is not wrapped in parentheses</strong>. JSHint will throw this error in the same situation, but only <strong>if the <span class="code">immed</span> option is set to <span class="code">true</span></strong>. In the following example we assign the <em>return value</em> of the anonymous function the variable <span class="code">x</span>:
+    当发现<strong>一个未被括号包含的、立即调用的函数</strong>时，JSLint会抛出这个"Wrap an immediate function invocation in parentheses"错误。在某些情况下JSHint会抛出这个错误，但是只有<strong>设置了 <span class="code">immed</span> 选项为<span class="code">true</span>时</strong>。在下面这个例子中我们将匿名函数<em>返回值</em>赋给了变量<span class="code">x</span>:
 </p>
 <textarea>
 /*jshint immed: true */
@@ -19,7 +19,7 @@ var x = function () {
     };
 }();</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
     This error is raised to highlight a <strong>lack of convention</strong>. Your code will run fine if you do not fix this error, but it may be confusing to others.
