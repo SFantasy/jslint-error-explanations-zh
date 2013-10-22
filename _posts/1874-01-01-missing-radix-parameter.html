@@ -8,7 +8,7 @@ author: jallardice
     <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint and JSHint will throw the "Missing radix parameter" error when they encounter <strong>a call to the <span class="code">parseInt</span> function that only has one argument</strong>. Here's an example:
+    当JSLint与JSHint发现调用<span class="code">parseInt</span>函数时只有一个参数，就会抛出"Missing radix parameter"的错误，请看以下例子：
 </p>
 <textarea>
 parseInt("10");</textarea>
@@ -16,26 +16,26 @@ parseInt("10");</textarea>
     <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>potential oversight that could lead to problems</strong>. The second argument of the <span class="code">parseInt</span> function is used to specify a radix. If no radix is specified, the function can return suprising results. 
+    这个错误是为了强调<strong>潜在的、会引发问题的错误</strong>。<span class="code">parseInt</span>函数的第二个参数用来声明一个基数。如果没有声明基数，函数会返回令人感到惊奇的结果。
 </p>
 <p>
-    If no radix is specified and the string begins with a <span class="code">0</span>, the string will be interpreted as an octal (base 8) number. For example, <span class="code">parseInt("010");</span> will return <span class="code">8</span>, and not <span class="code">10</span>. This behaviour was allowed by the ECMAScript 3 specification. However, here's what the ECMAScript 5 specification has to say:
+    如果没有声明基数，并且字符串是以<span class="code">0</span>开头，这个字符串就会当做一个8进制数字（以8为基数）。如，<span class="code">parseInt("010");</span>会返回<span class="code">8</span>，而不是<span class="code">10</span>。这个行为在ECMAScript 3中是被允许的。但是，ECMAScript 5中是这么描述的：
 </p>
 <blockquote>
-    The <span class="code">parseInt</span> function produces an integer value dictated by interpretation of the contents of the <em>string</em> argument according to the specified <em>radix</em>. Leading white space in string is ignored. If <em>radix</em> is undefined or 0, it is assumed to be 10 except when the number begins with the character pairs <span class="code">0x</span> or <span class="code">0X</span>, in which case a radix of 16 is assumed.
+    <span class="code">parseInt</span>函数会根据<em>string</em>的内容以及指定的<em>radix</em>解析产生一个整数值。导致字符串中的空格被忽略。如果<em>radix</em>没有定义或者为0, 那么基数就会被假定为10，除非数字以<span class="code">0x</span>或者<span class="code">0X</span>开头，也就是将数字假定为16进制。
 </blockquote>
 <p>
 <p>
-    As of ECMAScript 5, this quirk of <span class="code">parseInt</span> has been removed. However, since it's likely you will want your code to run successfully in older environments that do not support ES5, you should always pass a radix to <span class="code">parseInt</span>.
+    因此在ECMAScript 5中，这个关于<span class="code">parseInt</span>的怪癖被扔掉了。但是，考虑到你需要让你的代码在老一点的、不支持ES5的环境中成功运行，你还是需要传递一个基数参数给<span class="code">parseInt</span>函数。
 </p>
 <p>
-    <h4>An small oversight in JSLint and JSHint</h4>
+    <h4>JSLint与JSHint的一点小小的疏忽</h4>
 </p>
 <p>
-    Note that neither JSLint nor JSHint make an attempt to check the type of the second argument. They only checks that there is one. Therefore, the following snippet does not generate an error, even though it behaves as if you didn't pass in a radix at all. Just something to be wary of when using the <span class="code">parseInt</span> function:
+    值得一提的是，不管是JSLint还是JSHint都不会去检查第二个参数的类型。它们只会检查第一个参数。因此，以下代码不会产生任何错误，尽管它表现的和你不传递任何基数一模一样。这也是在使用<span class="code">parseInt</span>函数时的值得警惕的地方：
 </p>
 <textarea>
 parseInt("10", null);</textarea>
 <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. The identifier of this warning is <strong>W065</strong>. This means you can tell JSHint to not issue this warning with the <code>/*jshint -W065 */</code> directive.
+    在JSHint 1.0.0及以上版本中你可以通过<a href="http://jshint.com/docs/#options" target="_blank">特定的选项语法</a>来忽略这个警告。这个警告的标识符是<strong>W065</strong>,也就是说你可以通过<code>/*jshint -W065*/</code>让JSHint不提示这个问题。
 </p>
