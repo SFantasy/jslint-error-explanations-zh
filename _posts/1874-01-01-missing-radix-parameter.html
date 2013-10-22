@@ -5,7 +5,7 @@ tags: jslint jshint
 author: jallardice
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
     JSLint and JSHint will throw the "Missing radix parameter" error when they encounter <strong>a call to the <span class="code">parseInt</span> function that only has one argument</strong>. Here's an example:
@@ -13,7 +13,7 @@ author: jallardice
 <textarea>
 parseInt("10");</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
     This error is raised to highlight a <strong>potential oversight that could lead to problems</strong>. The second argument of the <span class="code">parseInt</span> function is used to specify a radix. If no radix is specified, the function can return suprising results. 

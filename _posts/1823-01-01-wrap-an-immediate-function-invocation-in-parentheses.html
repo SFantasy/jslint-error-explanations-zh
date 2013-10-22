@@ -8,7 +8,7 @@ author: jallardice
     <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    当发现<strong>一个未被括号包含的、立即调用的函数</strong>时，JSLint会抛出这个"Wrap an immediate function invocation in parentheses"错误。在某些情况下JSHint会抛出这个错误，但是只有<strong>设置了 <span class="code">immed</span> 选项为<span class="code">true</span>时</strong>。在下面这个例子中我们将匿名函数<em>返回值</em>赋给了变量<span class="code">x</span>:
+    当发现<strong>一个未被括号包含的、即时执行的函数</strong>时，JSLint会抛出这个"Wrap an immediate function invocation in parentheses"错误。在某些情况下JSHint会抛出这个错误，但是只有<strong>设置了 <span class="code">immed</span> 选项为<span class="code">true</span>时</strong>。在下面这个例子中我们将匿名函数<em>返回值</em>赋给了变量<span class="code">x</span>:
 </p>
 <textarea>
 /*jshint immed: true */
