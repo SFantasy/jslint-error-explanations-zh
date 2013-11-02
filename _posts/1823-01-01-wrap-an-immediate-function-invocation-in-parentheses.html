@@ -22,10 +22,10 @@ var x = function () {
     <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>lack of convention</strong>. Your code will run fine if you do not fix this error, but it may be confusing to others.
+    产生这个错误的原因是<strong>约定的缺失</strong>。如果不修复这个错误，你的代码仍然能正常的跑起来，但是却会让他人感到困惑。
 </p>
 <p>
-    Since function statements cannot be immediately invoked, and function <em>expressions</em> can be, a common technique to create an immediately-invoked function expression is to simply wrap a function statement in parentheses. The opening parentheses causes the contained function to be parsed as an expression, rather than a declaration:
+    既然函数语句不能被立即执行，而函数<em>表达式</em>所以，一种通用的用以创建一个立即调用函数表达式的方法是简单的将一个函数语句包裹在括号内。这个打开的括号让其内的函数被解析为一个表达式，而不是一个声明语句：
 </p>
 <textarea>
 var x;
@@ -34,7 +34,7 @@ var x;
     x = 10;
 }());</textarea>
 <p>
-    If you remove the wrapping parentheses from the above example, you will end up with a syntax error. For that reason, when immediately invoking a function expression that doesn't require any special treatment to turn it into an expression (as in the first example above), convention dictates that you should wrap it in parentheses anyway, for consistency and to make it clearer that the resulting value of the overall expression is the <em>return value</em> of the function, rather than a reference to the function itself:
+    如果你将上述例子中函数外面的括号去掉，那么会得到一个语法错误。正因如此，如果要立即调用一些不需任何处理就转换为表达式的函数表达式（就如上述第一个例子那样），惯例决定了你必须用括号将其包裹起 -- 为了保持一致性，并清晰的表示总体的表达式是函数的<em>返回值</em>而非对函数本身的引用：
 </p>
 <textarea>
 var x = (function () {
@@ -44,13 +44,13 @@ var x = (function () {
     };
 }());</textarea>
 <p>
-    Note that by fixing this error you are likely to end up with the related "<a href="../move-the-invocation-into-the-parens-that-contain-the-function/">Move the invocation into the parens that contain the function</a>" error, which should be very simple to fix at this point.
+    注意，通过解决这个错误你或许会解决相关的另一个问题："<a href="../move-the-invocation-into-the-parens-that-contain-the-function/">Move the invocation into the parens that contain the function</a>" , 现在看来这个问题将会变得异常简单。
 </p>
 <p>
-    <h3>Edge cases</h3>
+    <h3>边缘案例</h3>
 </p>
 <p>
-    In some situations, both JSLint and JSHint will incorrectly raise a single warning when they should be raising 2. In the following example, the value of <span class="code">x</span> will be the result of the logical and operation on the return value of the two immediately-invoked function expressions. If the parentheses wrapping the entire expression are removed, two warnings are issues instead of one:
+    在某些情况下，JSLint和JSHint会提示一个单独的警告而不是预想中的2个。在下面这个例子中，<span class="code">X</span>的值应该会是两个即刻调用函数表达式的返回值的逻辑与后的结果。如果将整个表达式外面包裹的括号去掉，那么就会有两个警告而不是现在的一个：
 </p>
 <textarea>
 /*jshint immed: true */
@@ -62,5 +62,5 @@ var x = (function () {
     return false;
 }());</textarea>
 <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. The identifier of this warning is <strong>W062</strong>. This means you can tell JSHint to not issue this warning with the <code>/*jshint -W062 */</code> directive.
+    在JSHint 1.0.0及以上版本中你可以通过一种<a href="http://jshint.com/docs/#options" target="_blank">特殊的语法</a>来忽略所有的警告. 这个警告的ID是 <strong>W062</strong>. 这意味着你可以通过<code>/*jshint -W062 */</code>以让JSHint不再提示。
 </p>

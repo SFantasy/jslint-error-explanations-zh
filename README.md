@@ -7,11 +7,12 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-3/108
+4/108
 
 * 2013-10-14 "You might be leaking a variable ({a}) here
 * 2013-10-16 "Don't make functions within a loop"
-* 2013-10-22 ""Missing radix parameter"
+* 2013-10-22 "Missing radix parameter"
+* 2013-11-03 "Wrap an immediate function invocation in parentheses"
 
 ## License
 
