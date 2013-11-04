@@ -13,6 +13,7 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 * 2013-10-16 "Don't make functions within a loop"
 * 2013-10-22 "Missing radix parameter"
 * 2013-11-03 "Wrap an immediate function invocation in parentheses"
+* 2013-11-04 "'with' is not allowed in strict mode"
 
 ## License
 

@@ -5,10 +5,10 @@ tags: jshint
 author: jallardice
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSHint will throw the "'with' is not allowed in strict mode" error when it encounters <strong>a <span class="code">with</span> statement inside code running in strict mode</strong>. In the following example we attempt to use a <span class="code">with</span> statement inside a function that contains a strict mode directive:
+    当JSHint遇到一个<strong>一个在strict模式下运行的包含<span class="code">with</span>语句的代码时，就会抛出"'with' is not allowed in strict mode"的错误</strong>。在下面这个例子中，我们尝试着在一个声明了strict模式的函数体内使用<span class="code">with</span>语句：
 </p>
 <textarea data-linter="JSHint">
 function example() {
@@ -21,14 +21,14 @@ function example() {
     }
 }</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>JavaScript syntax error</strong>. Your code will fail if you do not resolve this issue. The ECMAScript 5 specification clearly states that the presence of a <span class="code">with</span> statement within strict mode code is illegal (<a href="http://es5.github.com/#x12.10.1" target="_blank">ES5 &sect;12.10.1</a>):
+    提示这个错误是为了强调一个<strong>JavaScript语法错误</strong>。如果不解决这个问题，你的代码就会出错。在ECMAScript 5规范清晰地描述了在strict模式下<span class="code">with</span>语句的存在是非法的。 (<a href="http://es5.github.com/#x12.10.1" target="_blank">ES5 &sect;12.10.1</a>):
 </p>
-<blockquote>Strict mode code may not include a <em>WithStatement</em>. The occurrence of a <em>WithStatement</em> in such a context is treated as a SyntaxError.</blockquote>
+<blockquote>Strict模式的代码不包含<em>with语句</em>。<em>with语句</em>在这样的上下文中出现就会被当做一个语法错误。</blockquote>
 <p>
-    You can solve this problem by reworking code that uses <span class="code">with</span> statements to fully qualify the "namespace". The following example will behave in exactly the same way as the first example above:
+    你可以通过重写那段使用<span class="code">with</span>语句的代码来完全满足"namespace"。以下代码可以表现的和上面的第一个例子一样：
 </p>
 <textarea data-linter="JSHint">
 function example() {
@@ -39,7 +39,7 @@ function example() {
     a.b = 20;
 }</textarea>
 <p>
-    If you rely upon the behaviour of the <span class="code">with</span> statement for a valid use-case, your only option is to ensure your code does not run in strict mode. This results in a different message from JSHint, but one that can be surpressed (in version 1.0.0 and above) with the appropriate warning identifier flag:
+    如果你需要依赖<span class="code">with</span>语句的特性来满足一个有效的用例，而你唯一的选择就是确保你的代码不会在strict模式下运行。但是这样做就会在JSHint产生不同的提示消息，不过这可以在JSHint（版本1.0.0及以上）中通过适当的警告标示对其进行忽略：
 </p>
 <textarea data-linter="JSHint">
 function example() {
@@ -51,5 +51,5 @@ function example() {
     }
 }</textarea>
  <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. Since this message relates to a fatal syntax error you cannot disable it.
+    在JSHint 1.0.0及以上版本中你可以通过一种<a href="http://jshint.com/docs/#options" target="_blank">特殊的语法</a>来忽略所有的警告. 由于这个提示消息跟一个严重的语法错误有关，你无法让这个消息不显示。
 </p>
