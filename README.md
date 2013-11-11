@@ -7,13 +7,14 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-4/108
+6/108
 
 * 2013-10-14 "You might be leaking a variable ({a}) here
 * 2013-10-16 "Don't make functions within a loop"
 * 2013-10-22 "Missing radix parameter"
 * 2013-11-03 "Wrap an immediate function invocation in parentheses"
 * 2013-11-04 "'with' is not allowed in strict mode"
+* 2013-11-11 "Don't use 'with'"
 
 ## License
 

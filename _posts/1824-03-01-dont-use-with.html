@@ -5,10 +5,10 @@ tags: jshint
 author: jallardice
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSHint will throw the "Don't use 'with'" error when it encounters <strong>a use of the <span class="code">with</span> statement</strong> in code that is <strong>not running in strict mode</strong>. Here's an example:
+    当JSHint遇到一段<strong>不在strict模式</strong>下运行、但却<strong>使用了<span class="code">with</span>语句</strong>的代码时就会抛出"Don't use 'with'"的错误。以下是一个例子：
 </p>
 <textarea data-linter="JSHint">
 function example() {
@@ -22,11 +22,11 @@ function example() {
     }
 }</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This is the equivalent of the JSLint "<a href="/unexpected-with">Unexpected 'with'</a>" warning. More detail can be found on the page for that message.
+    这个等同于JSLint中的"<a href="/unexpected-with">Unexpected 'with'</a>"警告。更多的细节可以在那个提示消息的页面中找到。
 </p>
 <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. The identifier of this warning is <strong>W085</strong>. This means you can tell JSHint to not issue this warning with the <code>/*jshint -W085 */</code> directive.
+    在JSHint 1.0.0及以上版本中你可以通过一种<a href="http://jshint.com/docs/#options" target="_blank">特殊的语法</a>来忽略所有的警告. 这个警告的ID是 <strong>W085</strong>. 这意味着你可以通过<code>/*jshint -W085 */</code>以让JSHint不再提示。
 </p>
