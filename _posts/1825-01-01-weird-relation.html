@@ -3,12 +3,13 @@ title: "Weird relation"
 layout: post
 tags: jslint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "Weird relation" error when it encounters <strong>a comparison in which the left and right hand sides are "similar"</strong>, or <strong>a comparison in which either the left or right hand side is a string literal and the other is a numeric literal</strong>. In the following example we attempt to compare <span class="code">x</span> with itself:
+    当JSLint遇到<strong>一个左右两侧非常“类似”的对比</strong>或者<strong>表达式两边一个是数字而另一个是字符串</strong>时，会抛出“Weird relation”的错误。在下面的例子中我们尝试着比较<span class="code">x</span>和其本身：
 </p>
 <textarea>
 var x = 10;
@@ -16,7 +17,7 @@ if (x === x) {
     x = 20;
 }</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
     This error is raised to highlight a <strong>potentially confusing and potentially pointless piece of code</strong>. There are almost no situations in which you would need to compare something to itself.
