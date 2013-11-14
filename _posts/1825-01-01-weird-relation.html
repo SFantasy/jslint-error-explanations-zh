@@ -20,23 +20,23 @@ if (x === x) {
     <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>potentially confusing and potentially pointless piece of code</strong>. There are almost no situations in which you would need to compare something to itself.
+    这个错误用来强调<strong>潜在的、可能会让人感到困惑的以及一些无意义的代码</strong>。事实上，几乎没有一种情景是需要将变量（或其他内容）与之本身相对比的。
 </p>
 <p>
-    There is, however, one use case for this kind of comparison. Since the special Number value <span class="code">NaN</span> is never equal to itself, you can use a self-comparison to check whether some value is <span class="code">NaN</span>. The following example will return <span class="code">true</span> only if the value is <span class="code">NaN</span>.
+    但是对这种比较方式，还是有一种用例可以适用的。由于<span class="code">NaN</span>这个特殊的Number值永远和其自身不相等，你可以用一种自我比较的方式来检测是否有值等于<span class="code">NaN</span>。以下这个例子中，除非值为<span class="code">NaN</span>，都会返回<span class="code">true</span>。
 </p>
 <textarea>
-var x = parseInt("x", 10); //Results in NaN
+var x = parseInt("x", 10); //结果是 NaN
 if (x !== x) {
     /* We will only end up in here if 'x' is NaN but
      * JSLint doesn't like it */
     x = 20;
 }</textarea>
 <p>
-    If you are receiving this error for this specific use case, you can either ignore the error and let your script fail the JSLint test, or you can use the built-in <span class="code">isNaN</span> function instead. Here's the above snippet rewritten:
+    如果你在那些特殊的情况下收到了这样的错误，你可以忽略这个错误、让你的脚本无法通过JSLint的测试，或者你可以使用内置的<span class="code">isNaN</span>函数替代。以下是上述代码重写后的版本：
 </p>
 <textarea>
-var x = parseInt("x", 10); //Results in NaN
+var x = parseInt("x", 10); //结果是 NaN
 if (isNaN(x)) {
     /* We will only end up in here if 'x' is NaN and
      * this time JSLint is happy */
