@@ -17,6 +17,11 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 * 2013-11-11 "Don't use 'with'"
 * 2013-11-14 "Weird relation"
 
+## Contribution
+
+* Fork me and send pull request.
+* Open issues to correct my translation.
+
 ## License
 
 [CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/)
