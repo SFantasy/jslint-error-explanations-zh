@@ -3,12 +3,13 @@ title: "Variable {a} was not declared correctly"
 layout: post
 tags: jslint jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint and JSHint (prior to version 2.1.4) will throw the "Variable {a} was not declared correctly" error when they encounter <strong>more than one inline assignment</strong>. In this  example, we attempt to assign a string literal to the variables <span class="code">x</span>, <span class="code">y</span> and <span class="code">z</span>:
+    JSLint和JSHint (2.1.4版本之前)在遇到一个<strong>多于一个的行内等式</strong>时会抛出"Variable {a} was not declared correctly"的错误。在这个例子中，我们尝试着将一个字符串变量赋给变量<span class="code">x</span>, <span class="code">y</span> and <span class="code">z</span>:
 </p>
 <textarea>
 function example() {
@@ -17,10 +18,10 @@ function example() {
 
 example();</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a potential <strong>lack of understanding</strong>. A relatively common beginner mistake is to use the above code to declare multiple variables and assign a single value to all of them at the same time. However, the above is actually equivalent to the following:
+    提出这个错误是为了强调一种可能的、缺少对语言<strong>理解</strong>。一种相对常见的初学者错误就是用以上代码来同时声明并将一个值赋给多个变量。但是，上述代码实际上合下面的这段代码是一模一样的：
 </p>
 <textarea>
 function example() {
@@ -31,10 +32,10 @@ function example() {
 
 example();</textarea>
 <p>
-    This makes the problem more obvious. Instead of declaring three variables, we have actually only declared one. <span class="code">y</span> and <span class="code">z</span> will refer to variables with those identifiers in ancestor scopes, or (assuming the code is not running in strict mode) will be created as properties of the global object.
+    问题就此变得很显而易见。我们实际上只声明了一个变量而不是三个。<span class="code">y</span>和<span class="code">z</span>是对于那些在其上一级作用域中的变量的引用，或者会被作为全局对象的属性而创建（假设代码不在严格模式下运行）。
 </p>
 <p>
-    If you intended to declare multiple variables, you can use commas to separate them instead:
+    如果你想要声明多个变量，可以使用逗号将它们隔开：
 </p>
 <textarea>
 function example() {
@@ -46,6 +47,6 @@ function example() {
 example();</textarea>
 </p>
  <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. Since this message (incorrectly) relates to an error, rather than a warning, you cannot disable it.<br><br>
-    As of JSHint 2.1.4, this error has changed to "<a href="/you-might-be-leaking-a-variable-here">You might be leaking a variable ({a}) here</a>". More detail may be found on the page for that message.
+    在JSHint 1.0.0及以上版本中你可以通过一种<a href="http://jshint.com/docs/#options" target="_blank">特殊的语法</a>来忽略所有的警告。由于这个消息（错误地）与错误而不是警告相关，所以你无法禁用之。<br><br>
+    在JSHint2.1.4中，这个错误已经变为<a href="/you-might-be-leaking-a-variable-here">You might be leaking a variable ({a}) here</a>"，所以更多的细节可以在该消息的页面中找到。
 </p>
