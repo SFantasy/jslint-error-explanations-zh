@@ -3,19 +3,20 @@ title: "Weird assignment"
 layout: post
 tags: jslint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "Weird assignment" error when it encounters <strong>an assignment expression in which the left hand and right hand side expressions are "similar"</strong>. In the following example we declare a variable <span class="code">x</span> and then attempt to assign it to itself:
+    当JSLint遇到<strong>一个等号左右两侧的表达式“相似”</strong>时，会抛出"Weird assignment"错误。在下面这个例子中我们声明了一个变量<span class="code">x</span>并随后尝试将其赋值给自己：
 </p>
 <textarea>
 var x = 10;
 x = x;</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>potentially confusing and completely pointless piece of code</strong>. There are no situations in which you would need to assign something to itself.
+    这个错误是为了强调<strong>潜在的、可能会让人感到困惑的以及一些无意义的代码</strong>。事实上，几乎没有一种情景是需要将变量（或其他内容）与之本身相对比的。
 </p>

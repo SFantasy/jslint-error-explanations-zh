@@ -16,6 +16,7 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 * 2013-11-04 "'with' is not allowed in strict mode"
 * 2013-11-11 "Don't use 'with'"
 * 2013-11-14 "Weird relation"
+* 2013-11-16 "Weird assignment"
 
 ## Contribution
 
