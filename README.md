@@ -7,18 +7,19 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-10/108
+11/108
 
-* 2013-10-14 "You might be leaking a variable ({a}) here
-* 2013-10-16 "Don't make functions within a loop"
-* 2013-10-22 "Missing radix parameter"
-* 2013-11-03 "Wrap an immediate function invocation in parentheses"
-* 2013-11-04 "'with' is not allowed in strict mode"
-* 2013-11-11 "Don't use 'with'"
-* 2013-11-14 "Weird relation"
-* 2013-11-16 "Weird assignment"
-* 2013-11-16 "Variable {a} was not declared correctly"
+* 2013-11-28 "'{a}' is not defined"
 * 2013-11-28 "'{a}' was used before it was defined"
+* 2013-11-16 "Variable {a} was not declared correctly"
+* 2013-11-16 "Weird assignment"
+* 2013-11-14 "Weird relation"
+* 2013-11-11 "Don't use 'with'"
+* 2013-11-04 "'with' is not allowed in strict mode"
+* 2013-11-03 "Wrap an immediate function invocation in parentheses"
+* 2013-10-22 "Missing radix parameter"
+* 2013-10-16 "Don't make functions within a loop"
+* 2013-10-14 "You might be leaking a variable ({a}) here"
 
 ## Contribution
 

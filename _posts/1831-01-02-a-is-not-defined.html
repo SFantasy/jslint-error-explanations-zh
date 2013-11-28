@@ -5,13 +5,13 @@ tags: jshint
 author: jallardice
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSHint will throw the "'{a}' is not defined" error when it encounters a reference to <strong>an identifier that has not been declared as part of a <span class="code">var</span> or <span class="code">function</span> statement</strong>, and the <strong><span class="code">undef</span> option is set to <span class="code">true</span></strong>.
+    当JSHint遇到一个被引用的标示符未在<span class="code">var</span>或者<span class="code">function</span>语句中被声明时，会抛出"'{a}' is not defined"的错误，而且<strong><span class="code">undef</span>选项被设置为<span class="code">true</span></strong>。
 </p>
 <p>
-    In the following example we attempt to set the value of the variable <span class="code">x</span> that has not been defined, and then attempt to alert the value of that variable. We also attempt to set the value of <span class="code">y</span> to the return value of a function which has not been defined:
+    在下面的代码中，我们尝试着给一个未声明的变量<span class="code">x</span> 赋值，并且尝试着alert出该变量的值。同时也尝试着将一个未被声明的函数的返回值设置给变量<span class="code">y</span>：
 </p>
 <textarea data-linter="JSHint">
 /*jshint undef: true */
@@ -19,8 +19,9 @@ var y = someFunction();
 x = 10;
 alert(x);</textarea>
 <p>
+    这个和JSLint中的"<a href="/a-was-used-before-it-was-defined">'{a}' was used before it was defined</a>"警告是等价的。更多的信息可以在该消息的页面中了解。
     This is the equivalent of the JSLint "<a href="/a-was-used-before-it-was-defined">'{a}' was used before it was defined</a>" warning. More detail can be found on the page for that message.
 </p>
 <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. The identifier of this warning is <strong>W117</strong>. This means you can tell JSHint to not issue this warning with the <code>/*jshint -W117 */</code> directive.
+    在JSHint 1.0.0及以上版本中你可以通过一种<a href="http://jshint.com/docs/#options" target="_blank">特殊的语法</a>来忽略所有的警告. 这个警告的ID是 <strong>W117</strong>. 这意味着你可以通过<code>/*jshint -W117 */</code>以让JSHint不再提示。
 </p>
