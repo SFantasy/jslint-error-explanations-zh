@@ -7,7 +7,7 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-6/108
+10/108
 
 * 2013-10-14 "You might be leaking a variable ({a}) here
 * 2013-10-16 "Don't make functions within a loop"
