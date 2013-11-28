@@ -18,6 +18,7 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 * 2013-11-14 "Weird relation"
 * 2013-11-16 "Weird assignment"
 * 2013-11-16 "Variable {a} was not declared correctly"
+* 2013-11-28 "'{a}' was used before it was defined"
 
 ## Contribution
 
