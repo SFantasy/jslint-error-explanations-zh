@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-11/108
+12/108
 
+* 2013-12-01 "Use a named parameter"
 * 2013-11-28 "'{a}' is not defined"
 * 2013-11-28 "'{a}' was used before it was defined"
 * 2013-11-16 "Variable {a} was not declared correctly"

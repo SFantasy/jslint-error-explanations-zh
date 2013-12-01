@@ -3,12 +3,13 @@ title: "Use a named parameter"
 layout: post
 tags: jslint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "Use a named parameter" error when it encounters an attempt to <strong>access a property of the <span class="code">arguments</span> object by numerical index</strong>. In the following example we assign the first function argument to <span class="code">x</span>:
+    当JSLint遇到尝试着<strong>用数字下标访问<span class="code">arguments</span>对象的属性时</strong>，会抛出"Use a named parameter"错误。在下面这个例子中，我们将第一个函数参数赋值为<span class="code">x</span>：
 </p>
 <textarea>
 function add2() {
@@ -16,16 +17,16 @@ function add2() {
     return arguments[0] + arguments[1];
 }</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>potentially slow and potentially confusing piece of code</strong>. Using the <span class="code">arguments</span> object is slow. Many JavaScript engines will not actually create the object unless you access it within a function. Running <a href="http://jsperf.com/named-arguments-vs-arguments-object" target="_blank">a benchmark</a> in Chrome 30.0 reveals a 54% performance improvement when using named arguments:
+    这个错误是为了强调<strong>潜在的会造成速度缓慢和令人迷惑的代码片段</strong>。使用<span class="code">arguments</span>对象是缓慢的。除非你在函数内访问它，很多JavaScript引擎事实上不会创建这个对象。在Chrome 30.0中的<a href="http://jsperf.com/named-arguments-vs-arguments-object" target="_blank">跑分</a>显示，使用命名的形参效率会提高54%：
 </p>
 <p>
     <img src="/assets/images/1832-01-01-1.png" alt="JSPerf results">
 </p>
 <p>
-    As well as the performance issues, using the <span class="code">arguments</span> object over named parameters harms the readability of your code. It is much easier to understand what a function is going to do, and what you should be passing it, when that information is available from the signature. To solve this error, simply use named function parameters where possible:
+    除了性能上的问题，使用<span class="code">arguments</span>对象而不是已命名的参数会破坏你的代码的可读性。（使用参数）会更容易理解你的函数要做什么，以及需要传递什么参数。解决这个问题，可以简单的给函数的形参列表中添加自己命名的参数：
 </p>
 <textarea>
 // This is much easier to understand
@@ -34,5 +35,5 @@ function add2(firstNumber, secondNumber) {
     return firstNumber + secondNumber;
 }</textarea>
 <p>
-    Note, however, that there are valid use cases for the <span class="code">arguments</span> object. JSLint will only warn when you attempt to access a property of it by numeric index. The reason for this is that if you know the position of the argument in the list, there should be no reason you cannot give it an identifier in the function signature.
+    记住，仍然有些场景可以使用<span class="code">arguments</span>对象。JSHint只会在你想要尝试通过数字下标访问它的时候发出警告。正是因为你需要知道参数在列表里的位置，毫无疑问你肯定可以在函数签名中给出一个标示符。
 </p>
