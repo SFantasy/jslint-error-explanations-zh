@@ -5,19 +5,19 @@ tags: jslint
 author: jallardice
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "Use the || operator" error when it encounters a <strong>conditional operator in which the logical expression and first assignment expression are identical</strong>. In the following example we attempt to assign a value to <span class="code">b</span> depending on the value of <span class="code">a</span>:
+    当JSLint遇到一个<strong>逻辑表达式和第一个参数相等的条件操作符</strong>时，会抛出"Use the || operator"的错误。在下面的例子中，我们尝试着一个根据<span class="code">a</span>的指赋值给<span class="code">b</span>：
 </p>
 <textarea>
 var a = false,
     b = a ? a : "Example";</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    JSLint raises this error to indicate a piece of <strong>unnecessarily verbose and potentially confusing code</strong>. The construct shown in the example above may be used to set default values, for example from function arguments:
+    JSLint抛出这个错误是为了指出那些<strong>不必要的啰嗦和潜在的令人感到困惑的代码</strong>。上述示例中构造的表达式可能会被用作来设置默认值，一个以函数参数为例：
 </p>
 <textarea>
 function example(a, b) {
@@ -26,7 +26,7 @@ function example(a, b) {
     b = b ? b : "Another";
 }</textarea>
 <p>
-    However, this is unnecessarily verbose as the logical or operator, <span class="code">||</span>, does exactly the same thing:
+    但是这对于逻辑或操作符而言都是不必要的，<span class="code">||</span>，可以准确的做到相同的事情：
 </p>
 <textarea>
 function example(a, b) {
