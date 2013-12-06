@@ -3,37 +3,38 @@ title: "Use the object literal notation {}"
 layout: post
 tags: jslint jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint and JSHint (before version 1.0.0) will throw the "Use the object literal notation {}" error when they encounter <strong>a call to the <span class="code">Object</span> constructor preceded by the <span class="code">new</span> operator</strong>. Here's an example:
+    JSLint和JSHint(1.0.0版本前)遇到<strong>使用<span class="code">new</span>操作符调用<span class="code">Object</span>构造函数时</strong>，会抛出"Use the object literal notation {}"错误。下面是一个例子：
 </p>
 <textarea>
 var x = new Object();</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>potentially dangerous and unnecessarily verbose piece of code</strong>. Before we look at why that above snippet is potentially dangerous, here's a rewritten version using array literal notation that passes JSLint and JSHint. Notice that it's significantly shorter:
+    抛出这个错误是为了指出那些<strong>不必要的啰嗦和潜在的令人感到困惑的代码</strong>。在我们去了解为什么上述代码片段会有潜在危险的之前，这里是一个能通过JSLint和JSHint检测使用数组字面量的重写的版本。注意它显然更短：
 </p>
 <textarea>
 var x = {};</textarea>
 <p>
-    Since the <span class="code">Object</span> constructor is actually just a property of the global object, it can be overwritten. If it has been overwritten, then it's possible the first example above will generate a type error. For example, if you had run something like <span class="code">Object = 50</span>, a type error would be thrown because <span class="code">Object</span> is no longer a function.
+    由于<span class="code">Object</span>构造函数事实上只是全局对象的一个属性，它可以被重写。如果它被重写了的话，那么对于第一个例子而言就可能会产生一个类型错误。例如，如果你运行了一些像<span class="code">Object = 50</span>这样的代码，就会抛出一个类型错误，因为<span class="code">Object</span>不再是一个函数了。
 </p>
 <p>
-    Here's an example in which we overwrite the <span class="code">Object</span> constructor. Note that JSLint and JSHint do not know that's what has happened. Therefore, they take the safe approach and forbid the use of the <span class="code">Object</span> constructor completely:
+    下面是一个将<span class="code">Object</span>构造函数重写的例子。注意JSLint和JSHint并不知道发生了什么事。因此，这是一个安全使用的方法并且完全禁用了<span class="code">Object</span>构造函数：
 </p>
 <textarea data-jslintopts='{"browser":true}'>
 window.Object = 50;
 var x = new Object(); //TypeError: Object is not a function</textarea>
 <p>
-	Always using the literal form prevents running into problems like this, however unlikely they may be. Note that the literal form is identical to the constructor form (<a href="http://es5.github.com/#x11.1.5" target="_blank">ES5 &sect;11.1.5</a>):
+    总是使用字面量的形式可以避免让代码产生这样的问题。注意，字面量的形式和构造函数的方式是一样的(<a href="http://es5.github.com/#x11.1.5" target="_blank">ES5 &sect;11.1.5</a>):
 </p>
 <blockquote>The production <em>ObjectLiteral</em> <span class="code">: { }</span> is evaluated as follows:<br><br>
 &nbsp;&nbsp;&nbsp;&nbsp;1. Return a new object created as if by the expression <span class="code">new Object()</span> ...</blockquote>
 <p class="standout">
-    In JSHint 1.0.0 and above this warning has changed to "<a href="/the-object-literal-notation-is-preferrable">The object literal notation {} is preferrable</a>". More detail can be found the page dedicated to that message.
+    在JSHint1.0.0及以上版本中，这个警告变成了"<a href="/the-object-literal-notation-is-preferrable">The object literal notation {} is preferrable</a>".更多相关细节可以在该页面中找到。
 </p>
