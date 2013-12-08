@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-16/108
+17/108
 
+* 2013-12-08 "Use the array literal notation []"
 * 2013-12-08 "Spaces are hard to count. Use {a}"
 * 2013-12-08 "The object literal notation {} is preferrable"
 * 2013-12-06 "Use the object literal notation {}"

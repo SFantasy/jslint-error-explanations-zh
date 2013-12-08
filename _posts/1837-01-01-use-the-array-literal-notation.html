@@ -3,32 +3,33 @@ title: "Use the array literal notation []"
 layout: post
 tags: jslint jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint and JSHint (before version 1.0.0) will throw the "Use the array literal notation []" error when they encounter <strong>a call to the <span class="code">Array</span> constructor with the <span class="code">new</span> operator</strong>. Here's an example:
+    JSLint和JSHint(在版本1.0.0之前)在遇到<strong>使用<span class="code">new</span>操作符调用<span class="code">Array</span>构造函数</strong>时，会抛出"Use the array literal notation []"的错误。下面是一个例子：
 </p>
 <textarea>
 var x = new Array();</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>potentially dangerous and unnecessarily verbose piece of code</strong>. Before we look at why that above snippet is potentially dangerous, here's a rewritten version using array literal notation that passes JSLint and JSHint. Notice that it's significantly shorter:
+    这个错误是为了强调<strong>潜在的危险以及不必要的、啰嗦的代码片段</strong>。在我们了解为什么上述代码会有潜在危险之前，下面是一个使用数组字面量重写的可以通过JSLint和JSHint检测的版本。注意，它显然更短：
 </p>
 <textarea>
 var x = [];</textarea>
 <p>
-    Since the <span class="code">Array</span> constructor is actually just a property of the global object, it can be overwritten. If it has been overwritten, then it's possible the first example above will generate a type error. For example, if you had run something like <span class="code">Array = 50</span>, a type error would be thrown because <span class="code">Array</span> is no longer a function.
+    由于<span class="code">Array</span>构造器事实上只是全局对象的一个属性，它可以被重写。如果它被重写了的话，那么第一个例子就有可能会产生一个类型错误。例如，如果你运行了一些像<span class="code">Array = 50</span>这样的代码，就会抛出一个类型错误，因为<span class="code">Array</span>不再是一个函数了。
 </p>
 <p>
-    Here's an example in which we overwrite the <span class="code">Array</span> constructor. Note that JSLint and JSHint do not know that's what has happened. Therefore, they take the safe approach and forbids the of the <span class="code">Array</span> constructor completely:
+    下面是一个将<span class="code">Array</span>构造函数重写的例子。注意JSLint和JSHint都不知道发生了什么。因此，这是一个安全使用的方法并且完全禁用了<span class="code">Array</span>构造函数：
 </p>
 <textarea data-jslintopts='{"browser":true}'>
 window.Array = 50;
 var x = new Array(); //TypeError: Array is not a function</textarea>
 <p class="standout">
-    In JSHint 1.0.0 and above this warning has changed to "<a href="/the-array-literal-notation-is-preferrable">The array literal notation [] is preferrable</a>". More detail can be found the page dedicated to that message.
+    在JSHint 1.0.0及以上版本中，这个警告变成了"<a href="/the-array-literal-notation-is-preferrable">The array literal notation [] is preferrable</a>". 更多的细节可以在该页面中找到。
 </p>
