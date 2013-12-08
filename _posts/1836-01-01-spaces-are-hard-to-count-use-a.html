@@ -3,28 +3,28 @@ title: "Spaces are hard to count. Use {a}"
 layout: post
 tags: jslint jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint and JSHint (before version 1.0.0) will throw the "Spaces are hard to count. Use {a}" error when they encounter <strong>a regular expression literal containing multiple consecutive space characters</strong>. In the following example we define a regular expression that will match the string "three&nbsp;&nbsp;&nbsp;spaces" (there are three spaces between the two words):
+    JSLint和JSHint（1.0.0版本前）在遇到<strong>一个正则表达式包含了多个连续的空格字符</strong>时会抛出"Spaces are hard to count. Use {a}"的错误。在下面这个例子中我们定义了一个正则表达式，用以匹配字符串"three&nbsp;&nbsp;&nbsp;spaces" (在两个单词之间有三个空格):
 </p>
 <textarea>
 var regex = /three   spaces/;</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>potentially confusing piece of code</strong>. Your script will run without error if you do not change it, but it could be confusing to other developers, especially at first glance.
+    抛出这个错误是为了强调<strong>潜在的令人疑惑的代码片段</strong>。若不改变之，你的代码可以正常运行，但是这会让其他的开发者对此感到疑惑，特别是第一眼看到它的时候。
 </p>
 <p>
-    Anyone who wants to understand exactly what the regular expression should match will have to stop and count the number of spaces. This is unnecessary, since there is an alternative syntax that makes it much clearer. To fix this error, simply use the repetition operator:
+    任何想要看看这个正则表达式到底要匹配的内容时，都会去数一数有多少个空格。但这显然是不必要的，因为有一种可选的语法能让这种正则表达式变得更清晰。为了解决这个错误，可以简单的使用重复操作符：
 </p>
 <textarea>
 var regex = /three {3}spaces/;</textarea>
 <p>
-    Alternatively, you could modify your code to use the <span class="code">RegExp</span> constructor rather than a regular expression literal, since JSLint and JSHint will only raise this error inside a literal:
-</p>
+    或者，你可以将你的代码修改为使用<span class="code">RegExp</span>的构造函数而不是正则表达式字面量，这是因为JSLint和JSHint只会在使用一个字面量定义一个正则表达式的时候抛出错误：</p>
 <textarea>
 var regex = new RegExp("three   spaces");</textarea>
