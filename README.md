@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-18/108
+19/108
 
+* 2013-12-12 "Unnecessary use strict"
 * 2013-12-11 "The array literal notation [] is preferrable"
 * 2013-12-08 "Use the array literal notation []"
 * 2013-12-08 "Spaces are hard to count. Use {a}"
