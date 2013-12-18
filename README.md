@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-19/108
+20/108
 
+* 2013-12-18 "Unnecessary 'else' after disruption"
 * 2013-12-12 "Unnecessary use strict"
 * 2013-12-11 "The array literal notation [] is preferrable"
 * 2013-12-08 "Use the array literal notation []"
