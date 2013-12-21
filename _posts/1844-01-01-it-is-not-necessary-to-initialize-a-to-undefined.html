@@ -3,23 +3,24 @@ title: "It is not necessary to initialize '{a}' to 'undefined'"
 layout: post
 tags: jslint jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint and JSHint will throw the "It is not necessary to initialize '{a}' to 'undefined'" error when they encounter <strong>a variable statement in which the variable is explicitly initialized to <span class="code">undefined</span></strong>. Here's an example in which we attempt to declare a variable <span class="code">x</span> and assign <span class="code">undefined</span> to it:
+    JSLint和JSHint在遇到<strong>一条将变量赋值为<span class="code">undefined</span>的赋值语句</strong>时，会抛出"It is not necessary to initialize '{a}' to 'undefined'"的错误。以下是我们尝试着声明<span class="code">x</span>并将<span class="code">undefined</span>赋值给它的例子：
 </p>
 <textarea>
 var x = undefined;</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight <strong>a completely pointless piece of code</strong>. Your code will run without error if you do not change it, but you're needlessly increasing the size of your script. 
+    这个错误是为了强调<strong>一些令人感到疑惑的代码</strong>。如果不修改，这些代码会正常运行且没有错误，但是你会不必要的增加了脚本的大小。
 </p>
 <p>
-    Since variable declarations are hoisted to the top of the scope in which they occur, and assignments happen in the expected place, variables are always initialized to <span class="code">undefined</span> implicitly. The following is what happens when you enter a new scope (<a href="http://es5.github.com/#x10.5" target="_blank">ES5 &sect;10.5</a>):
+    由于变量声明在其出现的作用域内置于最顶部，且赋值操作在正常的位置尽心，变量总是会被隐式地初始化为<span class="code">undefined</span>。以下是当你进入一个作用域时发生的一切：(<a href="http://es5.github.com/#x10.5" target="_blank">ES5 &sect;10.5</a>):
 </p>
 <blockquote>8. For each <em>VariableDeclaration</em>... <em>d</em> in source text order do<br>
 &nbsp;&nbsp;&nbsp;&nbsp;a. Let <em>dn</em> be the <em>Identifier</em> in <em>d</em>.<br>
@@ -28,22 +29,22 @@ var x = undefined;</textarea>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i. Call <em>env's</em> CreateMutableBinding concrete method passing <em>dn</em> and <em>configurableBindings</em> as the arguments.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ii. Call <em>env's</em> SetMutableBinding concrete method passing <em>dn</em>, undefined, and <em>strict</em> as the arguments.</blockquote>
 <p>
-    It's the last line that's interesting. Effectively, it creates a binding in the current scope between the given identifier and the value <span class="code">undefined</span>. This shows that every variable has the value <span class="code">undefined</span> when it is created. When the variable statement is actually parsed, it is assigned a value if an assignment expression is present as part of the statement (as it is in our example above). This is further clarified by the following (<a href="http://es5.github.com/#x12.2" target="_blank">ES5 &sect;12.2</a>):
+    最后一行非常有趣。它有效的将当前作用域内给定的标示符和<span class="code">undefined</span>值绑定在了一起。这表明所有变量在创建的时候的值都是<span class="code">undefined</span>。如果赋值表达式被作为语句的一部分，那么变量就会被赋予一个值（如同我们上方的例子一样）。这在下面这段话中被解释的更为清楚：(<a href="http://es5.github.com/#x12.2" target="_blank">ES5 &sect;12.2</a>):
 </p>
 <blockquote>Variables are initialised to undefined when created. A variable with an <em>Initialiser</em> is assigned the value of its <em>AssignmentExpression</em> when the <em>VariableStatement</em> is executed, not when the variable is created.</blockquote>
 <p>
-    You can fix the error by simply removing the assignment expression from the variable statement. The variable will still have the same value:
+    你可以将赋值表达式删除来解决这个错误。变量仍将有一样的值：
 </p>
 <textarea>
 var x;</textarea>
 <p>
-    If, for whatever reason, you <em>have</em> to assign something to the variable, you can replace <span class="code">undefined</span> with something that returns the <span class="code">undefined</span> value. The simplest example of that is the <span class="code">void</span> operator:
+    如果由于某些原因，你<em>必须</em>将某些值赋给变量，可以将<span class="code">undefined</span>换成一些可以返回<span class="code">undefined</span>的值。最简单的例子就是使用<span class="code">void</span>操作符：
 </p>
 <textarea>
 var x = void 0;</textarea>
 <p>
-    If you have overwritten <span class="code">undefined</span> so you're actually assigning a different value to your variable, use a more sensible identifier. There are no JSLint or JSHint options that will surpress this error.
+    如果你将<span class="code">undefined</span>覆盖了，那么你实际上将不同的值赋给了你的变量，使用了更明确的标示符。JSLint和JSHint都没有选项会强调这个错误。
 </p>
 <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. The identifier of this warning is <strong>W080</strong>. This means you can tell JSHint to not issue this warning with the <code>/*jshint -W080 */</code> directive.
+    在JSHint1.0.0及以上你可以通过<a href="http://jshint.com/docs/#options" target="_blank">可选的特殊语法</a>来忽略这些警告。这个警告的标示符是<strong>W080</strong>。这就意味着你可以通过 <code>/*jshint -W080 */</code>告诉JSHint不去报告这个错误。
 </p>
