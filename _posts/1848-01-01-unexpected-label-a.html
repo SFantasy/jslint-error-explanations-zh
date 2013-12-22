@@ -3,12 +3,13 @@ title: "Unexpected label '{a}'"
 layout: post
 tags: jslint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "Unexpected label '{a}'" error when it encounters <strong>a labelled statement whose statement is not an iteration or switch statement</strong> or <strong>a labelled statement in the global execution context</strong>. The following example contains a labelled <span class="code">var</span> statement:
+    当JSLint遇到<strong>一个标签语句声明内的语句不是迭代或者switch语句</strong>或<strong>该标签语句在全局执行上下文中</strong>。以下这个例子包含了一个标签的<span class="code">var</span>语句：
 </p>
 <textarea>
 function test() {
@@ -19,37 +20,37 @@ labelled: //Label for the following var statement
 
 }</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error occurs in two different situations. Both require their own explanation.
+    这个错误出现于两个不同的场景。两者都需要各自的解释。
 </p>
 <p>
-    <h4>A labelled statement whose statement is not an iteration or switch statement</h4>
+    <h4>一个标签语句内的语句不是迭代或switch语句</h4>
 </p>
 <p>
-    The error is raised in this situation because JSLint has detected <strong>a completely useless and potentially confusing piece of code</strong>. According to the ECMAScript standard, any statement can be labelled. However, since the language does not define a <span class="code">goto</span> statement, labelled statements are only useful in conjunction with the <span class="code">break</span> and <span class="code">continue</span> statements, in the context of a loop or a switch.
+    这个错误在这种情况下被抛出，是因为JSLint发现了<strong>一段毫无用处并可能让人感到困惑的代码</strong>。根据ECMAScript标准，任何语句都是可以被用作标签的。但是，由于语言本身没有定义<span class="code">goto</span>语句，标签语句只有在与循环语句或者switch语句中的<span class="code">break</span>和<span class="code">continue</span>语句相关联的时候才有用。
 </p>
 <p>
-    The specification sums this up in <a href="http://es5.github.com/#x12.12" target="_blank">section &sect;12.12</a>:
+    规范总结了上面这一点在<a href="http://es5.github.com/#x12.12" target="_blank">section &sect;12.12</a>中:
 </p>
 <blockquote>
     A <em>Statement</em> may be prefixed by a label. Labelled statements are only used in conjunction with labelled <span class="code">break</span> and <span class="code">continue</span> statements. ECMAScript has no <span class="code">goto</span> statement.
 </blockquote>
 <p>
-    Therefore, there is no reason at all to use a label unless it's labelling a <span class="code">for</span>, <span class="code">while</span>, <span class="code">do</span> or <span class="code">switch</span> statement.
+    所以，除非在标记<span class="code">for</span>，<span class="code">while</span>，<span class="code">do</span>或者<span class="code">switch</span>语句时，否则没有任何理由去使用一个标记语句。
 <p>
-    <h4>A labelled statement in the global execution context</h4>
+    <h4>在全局运行上下文中使用标记语句</h4>
 </p>
 <p>
-    The error is raised in this situation because JSLint has detected <strong>a potentially confusing or dangerious piece of code</strong>. The same rules of the language (as detailed in the previous section) apply when the labelled statement occurs in the global execution context, but JSLint behaves slightly differently.
+    当JSLint检测到<strong>一段可能让人感到疑惑或者有危险的代码</strong>时，会抛出这个错误。同样的规则（如同上一节中详细描述的那样）适用于标记语句出现在全局执行作用域中，但是JSLint表现的略微不同。
 </p>
 <p>
-    JSLint disallows the use of any labelled statements in the global execution context, whether they are iteration/switch statements or not. This is in contrast to the behaviour inside a function context, where labelled iteration and switch statements <em>are</em> allowed. The reasoning behind this is unclear, but it's probably simply because in languages that support a <span class="code">goto</span> statement, labels in this sort of global scope would be very dangerous.
+    JSLint不允许在全局作用域中使用标记语句，无论它们是迭代或者switch语句。这其实是相比于在函数上下文中标记语句<em>是</em>被允许的。这背后的原因不明，但可能是因为那些支持<span class="code">goto</span>语句的语言中，标记语句在全局作用域中是十分危险的。
 </p>
 <p>
-    Since there is no way to refer to a label apart from inside an iteration or switch statement with the <span class="code">break</span> or <span class="code">continue</span> statement, and since every statement has its own label set, there is no way for a label in the global scope to interfere with other code (you cannot for example overwrite a label defined elsewhere in the scope by defining one with the same identifier).
+    由于除了迭代和switch语句中的<span class="code">break</span>或者<span class="code">continue</span>语句，没有任何方法可以引用到标记语句，并且由于每个语句都有自己的标记集，在全局作用域中的标记语句没有任何办法可以干涉到其他代码（你不能使用同一个标示符来重写一个定义在其他作用域的标记）。
 </p>
 <p>
-    For more detail, see this <a href="http://stackoverflow.com/questions/11530485/whats-wrong-with-using-a-labelled-statement-in-global-code" target="_blank">Stack Overflow question</a>.
+    更多的细节可以看这个<a href="http://stackoverflow.com/questions/11530485/whats-wrong-with-using-a-labelled-statement-in-global-code" target="_blank">Stack Overflow question</a>.
 </p>
