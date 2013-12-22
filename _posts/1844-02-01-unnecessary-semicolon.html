@@ -3,12 +3,13 @@ title: "Unnecessary semicolon"
 layout: post
 tags: jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSHint will throw the "Unnecessary semicolon" error when it encounters <strong>a semicolon following a block statement or function declaration</strong>. In the following example we mistakenly include a semicolon after an <span class="code">if</span> statement body, and another after a function declaration:
+    JSHint在遇到<strong>一个代码块或者函数声明后紧跟着一个分号</strong>时会抛出"Unnecessary semicolon"的错误。在下面这个例子中我们错误的将一个分号置于了<span class="code">if</span>语句体以及另一个在函数声明的末尾：
 </p>
 <textarea data-linter="JSHint">
 function example(a) {
@@ -17,17 +18,17 @@ function example(a) {
     };
 };</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>pointless piece of code</strong>. Semicolons are not required after block statements or function declarations. The specification makes it clear where semicolons are necessary. For example, compare the grammer for a variable statement (<a href="http://es5.github.io/#x12.2" target="_blank">ES5 &sect;12.2</a>) with the grammar for a block statement (<a href="http://es5.github.io/#x12.1" target="_blank">ES5 &sect;12.1</a>):
+    这个错误是为了强调那些<strong>毫无意义的代码</strong>。代码语句块或函数声明后的分号不是必须的。规范很清晰的告诉了我们分号在哪里是必须的。例如，对比变量声明语句(<a href="http://es5.github.io/#x12.2" target="_blank">ES5 &sect;12.2</a>)和代码块的语法(<a href="http://es5.github.io/#x12.1" target="_blank">ES5 &sect;12.1</a>)：
 </p>
 <blockquote><em>Block</em> :<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code">{</span> <em>StatementList</em><sub>opt</sub> <span class="code">}</span></blockquote>
 <blockquote><em>VariableStatement</em> :<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code">var</span> <em>VariableDeclarationList</em> <span class="code">;</span></blockquote>
 <p>
-    The grammar for the block statement clearly shows that no semicolon is required after the closing brace. This is also the case for function declarations. You can solve this error by simply removing any of these unnecessary semicolons:
+    代码块语句的语法表示最后闭合的大括号后是不需要分号的。这对于函数声明也是一样的。你可以将那些不必要的分号去除来解决这个错误：
 </p>
 <textarea data-linter="JSHint">
 function example(a) {
@@ -36,5 +37,5 @@ function example(a) {
     }
 }</textarea>
 <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. The identifier of this warning is <strong>W032</strong>. This means you can tell JSHint to not issue this warning with the <code>/*jshint -W032 */</code> directive.
+    在JSHint 1.0.0 及以上版本中，你可可以通过一个<a href="http://jshint.com/docs/#options" target="_blank">特殊的可选语法</a>来忽略任意警告。这个警告的标示符是<strong>W032</strong>。这就意味着你可以通过<code>/*jshint -W032 */</code>来告诉JSHint不要报告这个警告。
 </p>

@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-21/108
+22/108
 
+* 2013-12-22 "Unnecessary semicolon"
 * 2013-12-21 "It is not necessary to initialize '{a}' to 'undefined'"
 * 2013-12-18 "Unnecessary 'else' after disruption"
 * 2013-12-12 "Unnecessary use strict"
