@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-25/108
+26/108
 
+* 2013-12-31 "Unexpected '{a}'"
 * 2013-12-31 "Unexpected comment"
 * 2013-12-31 "Unexpected 'else' after 'return'"
 * 2013-12-22 "Unexpected label '{a}'"
