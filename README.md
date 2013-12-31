@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-23/108
+24/108
 
+* 2013-12-31 "Unexpected 'else' after 'return'"
 * 2013-12-22 "Unexpected label '{a}'"
 * 2013-12-22 "Unnecessary semicolon"
 * 2013-12-21 "It is not necessary to initialize '{a}' to 'undefined'"
