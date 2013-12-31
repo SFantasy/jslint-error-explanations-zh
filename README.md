@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-27/108
+28/108
 
+* 2013-12-31 "Unexpected '++'"
 * 2013-12-31 "Unexpected assignment expression"
 * 2013-12-31 "Unexpected '{a}'"
 * 2013-12-31 "Unexpected comment"
