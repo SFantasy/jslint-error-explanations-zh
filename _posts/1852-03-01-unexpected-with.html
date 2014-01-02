@@ -3,12 +3,13 @@ title: "Unexpected 'with'"
 layout: post
 tags: jslint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint (since July 2013) will throw the "Unexpected 'with'" error when it encounters <strong>a use of the <span class="code">with</span> statement</strong>. Prior to July 2013, the message was "Expected an identifier and instead saw 'with'", although the cause was identical. Here's an example:
+    JSLint(自2013年七月)在遇到<strong>使用<span class="code">with</span>语句</strong>时，会抛出"Unexpected 'with'"的错误。而在2013年七月之前，这个消息是"Expected an identifier and instead saw 'with'", 尽管原因是一样的。以下是一个例子：
 </p>
 <textarea>
 function example() {
@@ -22,16 +23,16 @@ function example() {
     }
 }</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    The <span class="code">with</span> statement was designed to make it easier to access deeply nested object properties. In the example above, we don't have to write <span class="code">a.b</span> inside the <span class="code">with</span> statement, since the body of the statement is executed with an <em>augmented lexical environment</em> that causes the reference to <span class="code">b</span> to refer to a property of <span class="code">a</span>.
+    <span class="code">with</span>语句被设计用来访问深度嵌套的对象属性。在上面这个例子中，我们不需要在<span class="code">with</span>语句中写<span class="code">a.b</span>这样的代码，因为语句体的执行在<em>变量词法环境</em>中，使得<span class="code">b</span>的引用指向了<span class="code">a</span>的一个属性。
 </p>
 <p>
-    In the example above, we attempt to set two properties of <span class="code">a</span> inside the <span class="code">with</span> statement. But <span class="code">a</span> doesn't have a property with the identifier <span class="code">c</span>. So instead of it being created, we are actually referring to the <span class="code">c</span> in the parent scope and accidentally change its value.
+    在上述例子中，我们尝试着在<span class="code">with</span>语句中对<span class="code">a</span>的两个属性赋值。但是<span class="code">a</span>没有标示符为<span class="code">c</span>这个属性。所以我们实际上是访问到了父作用域的变量<span class="code">c</span>并错误的改变了它的值，而不是新创造了一个属性。
 </p>
 <p>
-    This is the main reason the use of <span class="code">with</span> is discouraged. In fact, if your code is running in strict mode, any use of it will cause a syntax error (see the article regarding the related JSHint "<a href="/with-is-not-allowed-in-strict-mode">'with' is not allowed in strict mode</a>" message for more information). There are much better ways to achieve the same thing:
+    这是<span class="code">with</span>不被鼓励使用的主要原因。事实上，如果你的代码在严格模式下运行，任何对<span class="code">with</span>的使用都会造成语法错误（可以参考相关的JSHint"<a href="/with-is-not-allowed-in-strict-mode">'with' is not allowed in strict mode</a>"的消息以获得更多内容）。以下是更好的方法来实现相同的事：
 </p>
 <textarea>
 function example() {
