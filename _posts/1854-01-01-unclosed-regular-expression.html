@@ -3,28 +3,29 @@ title: "Unclosed regular expression"
 layout: post
 tags: jslint jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint and JSHint will throw the "Unclosed regular expression" error when they encounter <strong>a regular expression literal with no closing <span class="code">/</span> character</strong>. Here's an example:
+    当JSLint和JSHint在遇到<strong>一个正则表达式字面量没有<span class="code">/</span>闭合字符</strong>时，会抛出"Unclosed regular expression"的错误。以下是一个例子：
 </p>
 <textarea>
 var r = /^unclosed$;</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>fatal syntax error</strong>. The language specification shows the grammar for regular expression literals (<a href="http://es5.github.io/#x7.8.5" target="_blank">ES5 &sect;7.8.5</a>):
+    这个错误是为了强调<strong>严重的语法错误</strong>。语言规范展示了正则表达式字面量的语法(<a href="http://es5.github.io/#x7.8.5" target="_blank">ES5 &sect;7.8.5</a>):
 </p>
 <blockquote><em>RegularExpressionLiteral</em> ::<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code">/</span> <em>RegularExpressionBody</em> <span class="code">/</span> <em>RegularExpressionFlags</em></blockquote>
 <p>
-	This production makes it clear that regular expression literals must be terminated by a <span class="code">/</span> character. Not doing so will always cause a syntax error. To fix this issue, simply close the regular expression in question:
+    这份规范很清楚的解释了正则表达式字面量必须以<span class="code">/</span>字符结尾。如果不这样做会产生一个语法错误。解决这个问题，只需闭合问题中的正则表达式：
 </p>
 <textarea>
 var r = /^unclosed$/;</textarea>
  <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. Since this message relates to a fatal syntax error you cannot disable it.
+    在JSHint1.0.0及以上版本中你可以通过<a href="http://jshint.com/docs/#options" target="_blank">特殊的语法</a>来忽略任意警告。但是这个消息和严重的语法错误有关，所以你无法忽略之。
 </p>
