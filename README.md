@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-30/108
+31/108
 
+* 2013-01-04 "Unclosed comment"
 * 2013-01-03 "Unclosed regular expression"
 * 2013-01-02 "Unexpected 'with'"
 * 2013-12-31 "Unexpected '++'"
