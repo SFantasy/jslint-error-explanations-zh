@@ -3,55 +3,57 @@ title: "Unclosed string"
 layout: post
 tags: jslint jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint and JSHint will throw the "Unclosed string" error when they encounter <strong>a string that is not closed at the next line break, or at the end of the program</strong>. In this first example, we accidentally forget to close our string:
+    JSLint和JSHint在遇到<strong>一个字符串没有在换行或者在程序末尾时闭合</strong>，会抛出"Unclosed string"的错误。在这第一个例子中，不小心忘了将字符串闭合：
 </p>
 <textarea>
 var myString = "my string,
     myNumber = 10;</textarea>
 <p>
-    In the next example, we want our string to include a backslash character. The string appears to be closed but actually isn't, due to the backslash character escaping the closing quote:
+    在下一个例子中，我们希望字符串包含一个反斜杠。所以字符串看起来像是闭合的但事实上没有。原因是引号被转义了：
 </p>
 <textarea>
 var myString = "my string\",
     myNumber = 10;</textarea>
-<p>And this final example, which is only valid in ECMAScript 5-supporting environments, features a string that has not closed by the end of the program (the previous two examples failed at the first line break):</p>
+<p>
+    最后一个例子，在支持ECMAScript 5的环境下，字符串在程序的最后没有闭合（之前的两个例子出错是因为没有在行末闭合）：</p>
 <textarea>
 /*jslint es5: true */
 var myString = "my multiline \
                 string</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>JavaScript syntax error</strong>. Your code will not run unless you fix this issue. The ECMAScript grammar states that any string literal must be closed by the same character (either " or ') that opened it (<a href="http://es5.github.com/#x7.8.4" target="_blank">ES5 &sect;7.8.4</a>):
+    这个错误是为了强调一个<strong>JavaScript语法错误</strong>。除非你解决了这个问题，不然代码无法运行。ECMAScript语法陈述了所有的字符串字面量都必须由与开始相同的字符（"或'）闭合：(<a href="http://es5.github.com/#x7.8.4" target="_blank">ES5 &sect;7.8.4</a>):
 </p>
 <blockquote><em>StringLiteral</em> <span class="code">::</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code">"</span> <em>DoubleStringCharacters</em><sub>opt</sub> <span class="code">"</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code">'</span> <em>SingleStringCharacters</em><sub>opt</sub> <span class="code">'</span></blockquote>
 <p>
-    To fix the error, simply close any unclosed strings:
+    解决这个错误，只需将未闭合的字符串闭合即可：
 </p>
 <textarea>
 var myString = "my string",
     myNumber = 10;</textarea>
 <p>
-    The second example above failed because the backslash character was escaping the closing quote, turning it into a literal character rather than a syntactic structure. To include a backslash in a string, you need to escape the backslash itself:
+    上面的第二个例子出错是因为反斜杠将闭合的引号转义了，所以需要将其转化为字符而不是语法上的结构。要在字符串中包含一个反斜杠，需要将反斜杠本身进行转义：
 </p>
 <textarea>
 var myString = "my string\\",
     myNumber = 10;</textarea>
 <p>
-    Finally, notice that in the third example above, an error is thrown even though we have reached the end of the program. Since semi-colons can be automatically inserted by the JavaScript engine, you may be forgiven for thinking that this example would not fail when taken as an entire program in its own right. However, as the grammar quoted above shows, all strings have to be closed, so in this case we simply need to close the string again:
+    最后，注意上面的第三个例子，尽管我们已经到达了程序的末端，错误还是会呗抛出。由于分号会由JavaScript引擎自动插入，可以原谅你认为上述例子可以在运行的时候不会发生任何错误。但是，上述引用的语法告诉我们所有的字符串都必须闭合，因此我们必须再次将字符串闭合：
 </p>
 <textarea>
 /*jslint es5: true */
 var myString = "my multiline \
                 string";</textarea>
  <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. Since this message relates to a fatal syntax error you cannot disable it.
+    在JSHint1.0.0及以上版本中你可以通过<a href="http://jshint.com/docs/#options" target="_blank">特殊的语法</a>来忽略任意警告。但是这个消息和严重的语法错误有关，所以你无法忽略之。
 </p>
