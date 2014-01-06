@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-32/108
+33/108
 
+* 2013-01-06 "Type confusion: {a} and {b}"
 * 2013-01-05 "Unclosed string"
 * 2013-01-04 "Unclosed comment"
 * 2013-01-03 "Unclosed regular expression"
