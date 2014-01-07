@@ -7,13 +7,14 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-33/108
+34/108
 
-* 2013-01-06 "Type confusion: {a} and {b}"
-* 2013-01-05 "Unclosed string"
-* 2013-01-04 "Unclosed comment"
-* 2013-01-03 "Unclosed regular expression"
-* 2013-01-02 "Unexpected 'with'"
+* 2014-01-07 "Too many parameters per function ({a})"
+* 2014-01-06 "Type confusion: {a} and {b}"
+* 2014-01-05 "Unclosed string"
+* 2014-01-04 "Unclosed comment"
+* 2014-01-03 "Unclosed regular expression"
+* 2014-01-02 "Unexpected 'with'"
 * 2013-12-31 "Unexpected '++'"
 * 2013-12-31 "Unexpected assignment expression"
 * 2013-12-31 "Unexpected '{a}'"
