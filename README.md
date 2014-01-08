@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-34/108
+35/108
 
+* 2014-01-08 "This function has too many parameters"
 * 2014-01-07 "Too many parameters per function ({a})"
 * 2014-01-06 "Type confusion: {a} and {b}"
 * 2014-01-05 "Unclosed string"
