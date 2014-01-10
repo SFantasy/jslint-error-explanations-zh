@@ -3,23 +3,24 @@ title: "Unexpected TODO comment"
 layout: post
 tags: jslint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "Unexpected TODO comment" error when it encounters <strong>a comment in which the first word is "TODO"</strong>. Here's an example:
+    JSLint在遇到<strong>一个以"TODO"开头的注释</strong>时会抛出"Unexpected TODO comment"的错误。以下是一个例子：
 </p>
 <textarea>
 // TODO: Finish writing about JSLint errors</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>lack of convention</strong>. Comments that start with the word "TODO" are commonly used to mark unfinished parts of code. JSLint takes the safe approach and assumes that your code is not production-ready if it contains such comments.
+    这个错误是为了强调<strong>缺乏理解</strong>。以单词"TODO"开头的注释通常用来标记未完成的代码。JSLint采取这种安全措施并假设你的代码如果包含了这样的注释是不能用于生产环境的。
 </p>
 <p>
-    If you are happy with "TODO" comments being in your code, you can pass the <span class="code">todo</span> option to JSLint to tell it to ignore them:
+    如果你高兴使用"TODO"注释在你的代码中，你可以通过设置<span class="code">todo</span>选项来告诉JSLint来忽略之：
 </p>
 <textarea>
 /*jslint todo: true */
