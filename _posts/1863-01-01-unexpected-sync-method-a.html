@@ -3,31 +3,32 @@ title: "Unexpected sync method: '{a}'"
 layout: post
 tags: jslint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "Unexpected sync method: '{a}'" error when it encounters <strong>an attempt to access a property whose identifier ends with the string "<span class="code">Sync</span>"</strong>. In the following example we attempt to get an array of file names within a directory (this is a Node.js example):
+    JSLint在遇到<strong>一段尝试访问一个名称以"<span class="code">Sync</span>"结尾的属性时</strong>会抛出"Unexpected sync method: '{a}'"的错误。在下面这个例子中，我们尝试着从一个文件夹中获取一个文件中的一个数组（Node.js为例）：
 </p>
 <textarea>
 /*jslint node: true */
 var fs = require("fs"),
     files = fs.readdirSync("myDirectory");</textarea>
 <p>
-    Note that although the error messages states "method", JSLint will actually raise this error for an attempt to access any property that fits the criteria, whether it's a method or not (it doesn't check to see if a pair of invoking parentheses follow the identifier).
+    注意尽管错误消息讲的是"method"，JSLint实际上抛出这个错误是因为会访问到边界区，而不管是否是一个调用方法（并不检测标示符之后的一对括号）。
 </p>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>lack of convention</strong> and possible <strong>bad practice</strong>. Your code should run without problems if you don't change it, but there are likely to be better ways to acheive the same result.
+    这个错误是为了强调<strong>约定的缺少</strong>以及可能的<strong>错误实践</strong>。若是不修改这些代码，你的代码在运行时并不会报错，但是事实上有更好的方式去实现之。
 </p>
 <p>
-    In Node.js in particular, there are many asynchronous methods that provide synchronous equivalents. For example, there is a <span class="code"><a href="http://nodejs.org/api/fs.html#fs_fs_readdir_path_callback" target="_blank">readdir</span></a> method that is the asynchronous version of the <span class="code"><a href="http://nodejs.org/api/fs.html#fs_fs_readdirsync_path" target="_blank">readdirSync</a> method in our example above.
+    特别是在Node.js中，有很多异步的方法提供了同步一样的功能。例如：有一个<span class="code"><a href="http://nodejs.org/api/fs.html#fs_fs_readdir_path_callback" target="_blank">readdir</span></a>方法，它是上文代码中<span class="code"><a href="http://nodejs.org/api/fs.html#fs_fs_readdirsync_path" target="_blank">readdirSync</a>方法的异步版本。
 </p>
 <p>
-    In almost all situations it's preferrable to use the asynchronous method over the synchronous one. The reason is that synchronous methods will block execution until they have finished doing whatever they need to do. In the browser this can result in an apparently "frozen" page. To fix this issue, simply rework your code to use the asynchronous version of the method:
+    在绝大多数的情况下，最好还是选择使用异步方法而不是同步的。理由很简单，同步的方法会阻塞运行直到它们完成了方法需要做的事情。在浏览器中，这会显而易见的导致"fronzen"页面。为了解决这个问题，可以简单的修改你的代码，使用异步方法：
 </p>
 <textarea>
 /*jslint node: true */
@@ -42,7 +43,7 @@ fs.readdir("myDirectory", function (err, files) {
     }
 });</textarea>
 <p>
-    Alternatively, if you have a real need to use synchronous methods, you can surpress this error by setting the <span class="code">stupid</span> option to <span class="code">true</span>. You can tell by the name of the option how Douglas Crockford, author of JSLint, feels about this:
+    当然，如果你真的需要使用同步方法，你可以通过将<span class="code">stupid</span>选项设置为<span class="code">true</span>来忽略这个错误。同时可以感受一下JSLint的作者Douglas Crockford对此的感受：
 </p>
 <textarea>
 /*jslint node: true, stupid: true */

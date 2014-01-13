@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-36/108
+37/108
 
+* 2014-01-13 "Unexpected sync method: '{a}'"
 * 2014-01-10 "Unexpected TODO comment"
 * 2014-01-08 "This function has too many parameters"
 * 2014-01-07 "Too many parameters per function ({a})"
