@@ -5,38 +5,38 @@ tags: jshint
 author: jallardice
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSHint (since version r09) will throw the "Strings must use singlequote" error when it encounters a <strong>string literal delimited by double quote characters</strong>, but only when <strong><span class="code">quotmark</span> option is set to <span class="code">single</span></strong>. In the following example we attempt to assign a string literal to the variable <span class="code">x</span>:
+    当JSHint(从版本r09开始)遇到一个<strong>用双引号包含的字符串</strong>，并当<strong><span class="code">quotmark</span></strong>被设置为<strong><span class="code">single</span></strong>时。在下面例子中我们尝试着将字符串字面量赋给变量<span class="code">x</span>：
 </p>
 <textarea data-linter="JSHint">
 /*jshint quotmark:single */
 var x = "My String";</textarea>
 <p>
-    JSHint will throw the related "Strings must use doublequote" error in the opposite situation, when the string is delimited by single quote characters and the <span class="code">quotmark</span> option is set to <span class="code">double</span>:
+    JSHint在襄樊的情况下会抛出"Strings must use doublequote"的错误，即当字符串被单引号包裹并将<span class="code">quotmark</span>设置为<span class="code">double</span>：
 </p>
 <textarea data-linter="JSHint">
 /*jshint quotmark:double */
 var x = 'My String';</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>deviation from a specific coding style</strong>. There is no difference in JavaScript between single and double quotes. This is made clear by the grammar for string literals (<a href="http://es5.github.io/#x7.8.4" target="_blank">ES5 &sect;7.8.4</a>):
+    这个错误是为了强调一种<strong>不同于一些特定编程风格的风格</strong>。在JavaScript中使用单引号和双引号是没有区别的。这在语法中关于字符串字面量已经解释的很清楚(<a href="http://es5.github.io/#x7.8.4" target="_blank">ES5 &sect;7.8.4</a>):
 </p>
 <blockquote><em>StringLiteral</em> ::<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code">"</span> <em>DoubleStringCharacters</em><sub>opt</sub> <span class="code">"</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code">'</span> <em>SingleStringCharacters</em><sub>opt</sub> <span class="code">'</span></blockquote>
 <p>
-    The only difference is that <em>DoubleStringCharacters</em> cannot contain another double quote, and <em>SingleStringCharacters</em> cannot contain a single quote (as that would terminate the string literal).
+    唯一不同的是<em>DoubleStringCharacters</em>不能包含另外的双引号以及<em>SingleStringCharacters</em>不能包含另外的单引号（那将会字符串字面量）。
 </p>
 <p>
-    If this option is set then it is likely your codebase requires you to conform to a specific style in which one style of quote is preferred. To fix the error, simply use the correct type of quote:
+    如果设置了这个选项，那么这就像你自己的代码库，要求你能够符合那种代码规范中的引号规则。为了解决这个错误，简单的使用正确的引号类型：
 </p>
 <textarea data-linter="JSHint">
 /*jshint quotmark:single */
 var x = 'My String';</textarea>
 <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. The identifier of this warning is <strong>W109</strong> (for single quotes) and <strong>W108</strong> (for double quotes). This means you can tell JSHint to not issue this warning with the <code>/*jshint -W109 */</code> or <code>/*jshint -W108 */</code> directive.
+    在JSHint1.0.0及以上版本中你可以通过<a href="http://jshint.com/docs/#options" target="_blank">特殊的语法选项</a>来将其忽略。这个警告的标示符是<strong>W109</strong>（单引号）和<strong>W108</strong>(双引号)。也就意味着你可以通过<code>/*jshint -W109*/</code>或<code>/*jshint -W108 */</code>来告诉JSHint不要报告这个错误。
 </p>

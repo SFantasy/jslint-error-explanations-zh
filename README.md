@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-38/108
+39/108
 
+* 2014-02-03 "Strings must use singlequote"
 * 2014-01-31 "['{a}'] is better written in dot notation"
 * 2014-01-13 "Unexpected sync method: '{a}'"
 * 2014-01-10 "Unexpected TODO comment"
