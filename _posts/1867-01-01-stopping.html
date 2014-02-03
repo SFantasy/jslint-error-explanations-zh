@@ -3,26 +3,27 @@ title: "Stopping. ({a}% scanned)"
 layout: post
 tags: jslint jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "Stopping. ({a}% scanned)" error when it encounters <strong>a JavaScript syntax error</strong> and cannot continue to reliably parse the program. JSHint will throw this error in the same situation, but only <strong>if the <span class="code">passfail</span> option is set to <span class="code">true</span></strong>. In the following example we have half a variable statement which is invalid and cannot be parsed as a complete JavaScript program:
+    JSLint在遇到<strong>一个JavaScript语法错误</strong>并且无法继续可靠的解析程序。JSHint会在相同情况下抛出这个错误，但是只有<strong>当<span class="code">passfail</span>选项设置为<span class="code">true</span></strong>时。在下面这个例子中，我们给出了半个不合法的变量语句并且不能被解析为一个完整的JavaScript程序：
 </p>
 <textarea>
 var</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>JavaScript syntax error</strong> and the fact that <strong>the parser cannot reliably finish parsing your program</strong>. Your code will not run unless you fix this error.
+    这个错误是为了强调<strong>JavaScript语法错误</strong>以及<strong>解析器无法可靠的完成解析你的程序</strong>。你的代码无法继续运行，除非将这个解决了。
 </p>
 <p>
-    The exact cause will depend on your program, but other errors are usually raised along side this one that should guide you to the problem with your code. In our example, the variable statement is missing an identifier:
+    事实上这个取决于你的程序，但是在你的代码中另外的错误却会因为这个错误而产生。在我们的例子中，变量语句会没有标示符：
 </p>
 <textarea>
 var x;</textarea>
  <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. Since this message relates to a fatal syntax error you cannot disable it.
+    在JSHint1.0.0及以上版本中你可以通过<a href="http://jshint.com/docs/#options" target="_blank">特殊的语法选项</a>来将其忽略。但是这个错误关系到一个严重的语法错误，你不能禁用之。
 </p>
