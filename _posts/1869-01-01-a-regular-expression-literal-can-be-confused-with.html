@@ -3,37 +3,38 @@ title: "A regular expression literal can be confused with '/='"
 layout: post
 tags: jslint jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint and JSHint (prior to version 1.0.0) will throw the "A regular expression literal can be confused with '/='" error when they encounter <strong>a regular expression literal that begins with the <span class="code">=</span> character</strong>. In the following example we attempt to assign a regular expression literal to match the string "<span class="code">=1</span>" to the variable <span class="code">x</span>:
+    JSLint和JSHint(版本1.0.0之前)在遇到<strong>正则表达式字面量由<span class="code">=</span>符号起始</strong>时，会抛出"A regular expression literal can be confused with '/='"的错误。在下面例子中我们尝试着将正则表达式字面量"<span class="code">=1</span>"赋给变量<span class="code">=</span>去匹配字符串:
 </p>
 <textarea>
 var regex = /=1/;</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>potentially confusing piece of code</strong>. Your code will run fine if you do not fix this error, but it may be confusing to others, especially at first glance to someone quickly searching through your script.
+    这个错误是为了强调<strong>潜在的让人感到疑惑的代码</strong>。若不修复这个错误，你的代码会正常运行，但是会让其他人感到困惑，特别是那些随便扫了一眼你的脚本的人们。
 </p>
 <p>
-    The <span class="code">/</span> character is ambiguous in JavaScript. It can either signify the start or end of a regular expression literal, as it does in the example above, or it can be interpreted as the division operator. Like most of the arithmetic operators, the division operator can be combined with the assignment operator to produce a shorthand:
+    <span class="code">/</span>字符在JavaScript中是有歧义的。它既能表示正则表达式开始，正如上面一个例子中展示的那样，也能被解释为除号。就像大多数算术符号一样，除号可以和赋值符号一起作为组合符号：
 </p>
 <textarea>
 var x = 10;
 x /= 5; // Shorthand division-assignment operator</textarea>
 <p>
-    This ambiguity is not a problem because the parser should always be able to differentiate between the two uses. However, you can see why the regular expression example at the top of this page could cause initial confusion.
+    这个二义性并不是一个真正的问题，因为解释器总是能区分两种不同的用法。但是，你可以看到上面的正则表达式可能造成一开始的疑惑。
 </p>
 <p>
-    To solve this issue, you can simply escape the <span class="code">=</span> character in the regular expression. This will behave in exactly the same way but since the <span class="code">=</span> character is no longer the first, the error is not raised:
+    为了解决这个问题，你可以简单的将<span class="code">=</span>符号在正则表达式中转义。这会表现的很正常，因为<span class="code">=</span>符号已经不是第一个字符，所以错误不会再出现：
 </p>
 <textarea>
 var regex = /\=1/;</textarea>
 <p>
-    Alternatively, you can use the <span class="code">RegExp</span> constructor, which removes the need for the delimiting <span class="code">/</span> characters:
+    另外，你可以使用<span class="code">RegExp</span>构造函数，这就不需要<span class="code">/</span>了：
 </p>
 <textarea>
 var regex = new RegExp("=1");</textarea>
