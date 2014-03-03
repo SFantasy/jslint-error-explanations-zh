@@ -1,28 +1,29 @@
---- 
+---
 title: "Redefinition of '{a}'"
 layout: post
 tags: jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSHint will throw the "Redefinition of '{a}'" error when it encounters an attempt to <strong>declare a variable whose identifier is the same as that of a built-in native object</strong>. In the following example we attempt to declare a variable with the identifier <span class="code">String</span>:
+    若JSHint遇到<strong>声明的变量名和内建的原生对象名称相同</strong>，就会抛出"Redefinition of '{a}'"错误。在下面这个例子中我们尝试着用<span class="code">String</span>这个名称来声明一个对象：
 </p>
 <textarea data-linter="JSHint">
 var String = "My String";</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>potentially dangerous piece of code</strong>. Your code may run fine if you do not fix this error, but it will be confusing to others, especially at first glance to someone quickly searching through your script, and it will be likely to break third party scripts.
+    这个错误是为了强调<strong>潜在的有问题的代码</strong>。你的代码如果不修改，可能在运行时不会出现错误，但是这会让其他人感到十分困惑，特别是那些乍眼一看的人们，并且这很可能会对第三方的脚本造成影响。
 </p>
 <p>
-    It is perfectly valid to reassign (and thereby override) any of the native built-in functions, but there are limited use cases for it. JSHint forbids this practice completely and does not provide an option to allow it.
+    当然，你完全可以重新对任意的内置函数进行赋值或者重载，但是对于这种操作是有一定限制的。JSHint完全禁止进行这种操作，并且不提供任何参数去允许之。
 </p>
 <p>
-    The list of read only functions used by JSHint is as follows:
+    "只读函数"的列表如下：
 <p>
 <table class="table table-striped code">
     <tr>
@@ -68,8 +69,9 @@ var String = "My String";</textarea>
     </tr>
 </table>
 <p>
-    See the article on the "<a href="/read-only/">Read only</a>" error for more discussion. Note that JSLint defines this error message but never actually uses it.
+    参见"<a href="/read-only/">Read only</a>"错误以查看相关的更多的信息。注意JSLint定义了这个错误但是实际上从来没有使用过它。
 </p>
 <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. The identifier of this warning is <strong>W079</strong>. This means you can tell JSHint to not issue this warning with the <code>/*jshint -W079 */</code> directive.
+    在JSHint1.0.0及以上版本中，你可以使用一种<a href="http://jshint.com/docs/#options" target="_blank">特殊的语法选项</a>.
+    这个警告的标示符是<strong>W079</strong>. 这也就意味着你可以通过<code>/*jshint -W079 */</code>让JSHint不报告这个警告。
 </p>
