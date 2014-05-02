@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-43/108
+44/108
 
+* 2014-05-02 "Expected parameter (value) in set '{a}' function"
 * 2014-02-02 "Redefinition of '{a}'"
 * 2014-02-10 "Did you mean to return a conditional instead of an assignment?"
 * 2014-02-05 "A regular expression literal can be confused with '/='"

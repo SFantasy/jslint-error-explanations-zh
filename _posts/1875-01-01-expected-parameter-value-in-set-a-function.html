@@ -1,14 +1,15 @@
---- 
+---
 title: "Expected parameter (value) in set '{a}' function"
 layout: post
 tags: jslint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "Expected parameter (value) in set '{a}' function" error when it encounters <strong>multiple named arguments in the signature of a property setter function, none of which have the identifier <span class="code">value</span></strong>. In the following example we create an object <span class="code">x</span> with a getter and setter. The getter will always return half of the set value (since getters and setters are an ECMAScript 5 feature we need to set the <span class="code">es5</span> option, otherwise JSLint will not recognise them):
+    JSLint在遇到<strong>一个属性设置函数中有多个命名的参数，而其中没有一个参数是叫做<span class="code">value</span></strong>的时候，就会抛出"Expected parameter (value) in set '{a}' function"的错误。在下面这个例子中，我们创建了一个对象<span class="code">x</span>，其中包含了一个getter和setter。其中getter函数会返回一半的所设置的一半（由于getters和setters是ECMAScript5中的特性，我们需要在代码中设置<span class="code">es5</span>选项，否则JSLint会忽略之。）：
 </p>
 <textarea>
 /*jslint es5: true */
@@ -24,17 +25,17 @@ var x = {
     }
 };</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>lack of convention</strong> and a <strong>completely pointless piece of code</strong>. Your code will run without error if you do not change it, but could be confusing to other developers and adds unnecessary bytes to the weight of your script.
+    这个错误是为了强调<strong>约定的缺失</strong>以及一种<strong>完全没有意义的代码片段</strong>。若是不改变之，你的代码会正常运行并且没有任何错误，但是对于其他开发者而言会会让他们感到困惑，并且额外增加了你的脚本的大小。
 </p>
 <p>
-    ECMAScript 5 added new syntax for object property getter and setter functions. The specification states the following in reference to getters (<a href="http://es5.github.com/#x8.6.1" target="_blank">ES5 &sect;8.6.1</a>):
+    ECMAscript 5 为对象的getter和setter函数增添了新的语法。以下是标准中描述的getter的参考(<a href="http://es5.github.com/#x8.6.1" target="_blank">ES5 &sect;8.6.1</a>):
 </p>
 <blockquote>The function’s [[Call]] internal method... is called with an arguments list containing the assigned value as its sole argument each time a set access of the property is performed.</blockquote>
 <p>
-    Since the runtime will only ever pass a single argument to the function, there is no need to provide more than one named argument in the function signature. By convention, this single argument should be named <span class="code">value</span>, since it will be used to set the value of something. To fix this error, simply remove any additional named arguments, and rename the first one to <span class="code">value</span>:
+    因为运行时只会传递一个参数给函数，所以并没有必要在函数声明中提供多余一个的参数。方便起见，这个唯一的参数需要以<span class="code">value</span>为名，因为这个参数将会被用作去设置某些变量的值。为了解决这个错误，只要将多余的参数删除并且将第一个参数命名为<span class="code">value</span>:
 </p>
 <textarea>
 /*jslint es5: true */
