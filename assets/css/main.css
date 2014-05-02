@@ -185,7 +185,7 @@ h2.section-header {
 .posts li {
     border-bottom: 1px solid #eee;
     padding: 10px 0 15px 0;
-    height: 100px;
+    height: 96px;
     overflow: hidden;
 }
 .posts li:first-child {
