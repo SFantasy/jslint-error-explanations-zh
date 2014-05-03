@@ -1,14 +1,15 @@
---- 
+---
 title: "Unexpected parameter '{a}' in get {b} function"
 layout: post
 tags: jslint jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint and JSHint will throw the "Unexpected parameter '{a}' in get {b} function" error when they encounter <strong>a named argument in the signature of a property getter function</strong>. In the following example we create an object <span class="code">x</span> with a getter and setter. The getter will always return half of the set value (since getters and setters are an ECMAScript 5 feature we need to set the `es5` option, otherwise JSLint will not recognise them):
+    当JSLint和JShHint遇到<strong>一个属性getter函数中含有形参</strong>时，会抛出"Unexpected parameter '{a}' in get {b} function"错误。在下面的例子中，我们创建了一个对象<span class="code">x</span>并包含了一个getter和setter。其中getter会返回所设置值的一半（由于getter和setter是ECMAScript5特性，我们需要设置`es5`选项，否则JSLint会忽略之）：
 </p>
 <textarea>
 /*jslint es5: true */
@@ -24,17 +25,18 @@ var x = {
     }
 };</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>completely pointless and potentially confusing piece of code</strong>. Your code will run without error if you do not change it, but could be confusing to other developers and adds unnecessary bytes to the weight of your script.
+    这个错误是为了强调一种<strong>完全无用并且潜在的让人感到困惑的代码</strong>。你的代码可以正常运行并不会产生任何错误，但是会让其他开发者感到困惑并且不必要地增加了文件的大小。
 </p>
 <p>
-    ECMAScript 5 added new syntax for object property getter and setter functions. The specification states the following in reference to getters (<a href="http://es5.github.com/#x8.6.1" target="_blank">ES5 &sect;8.6.1</a>):
+
+    ECMAscript 5 为对象的getter和setter函数增添了新的语法。以下是标准中描述的getter的参考(<a href="http://es5.github.com/#x8.6.1" target="_blank">ES5 &sect;8.6.1</a>):
 </p>
 <blockquote>The function’s [[Call]] internal method... is called with an empty arguments list to return the property value each time a get access of the property is performed.</blockquote>
 <p>
-    Since the runtime will never pass any arguments to the getter function, there is no need to provide any named arguments in the function signature. Simply remove them to fix the error:
+    由于在运行时getter函数永远不会被传入任何参数，所以没有必要在函数的形参列表中提供任意的参数。只需将形参删除就可以修复此错误：
 </p>
 <textarea>
 /*jslint es5: true */
@@ -50,5 +52,5 @@ var x = {
     }
 };</textarea>
 <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. The identifier of this warning is <strong>W076</strong>. This means you can tell JSHint to not issue this warning with the <code>/*jshint -W076 */</code> directive.
+    在JSHint1.0.0及以上版本中，你可以通过一种<a href="http://jshint.com/docs/#options" target="_blank">特殊的语法选项</a>来忽略之。这个警告的标示符是<strong>W076</strong>。也就是说通过<code>/*jshint -W076 */</code>JSHint不会再发出警告。
 </p>
