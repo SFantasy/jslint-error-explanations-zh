@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-45/108
+46/108
 
+* 2014-05-04 "Don't use octal: '{a}'. Use '\u...' instead"
 * 2014-05-03 "Unexpected parameter '{a}' in get {b} function"
 * 2014-05-02 "Expected parameter (value) in set '{a}' function"
 * 2014-02-02 "Redefinition of '{a}'"

@@ -1,29 +1,30 @@
---- 
-title: "Don't use octal: '{a}'. Use '\\u...' instead"
+---
+title: "Don't use octal: '{a}'. Use '\u...' instead"
 layout: post
 tags: jslint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "Don't use octal: '{a}'. Use '\u...' instead" error when it encounters <strong>a string literal that contains the escape character followed by a digit between 0 and 7</strong>. In the following example we attempt to assign a string to a variable <span class="code">x</span>. The octal escape sequence <span class="code">\251</span> corresponds to the copyright symbol &copy;:
+    当JSLint遇到<strong>一个顺带着0~7的数字转义字符字符串字面量</strong>时，会抛出"Don't use octal: '{a}'. Use '\u...' instead"的错误。在下面的例子中，我们尝试着将一个字符串赋值给变量<span class="code">x</span>。八进制的转义字符<span class="code">\251</span>对应着copyright的符号 &copy;：
 </p>
 <textarea>
 var x = "Copyright \251";</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight <strong>the use of a deprecated language feature</strong>. As of version 5 of the ECMAScript specification, octal escape sequences are deprecated and should no longer be used. You run the risk of losing compatibility with newer JavaScript engines as support for this feature is gradually dropped.
+    这个错误是为了强调<strong>废弃语言特性的使用</strong>。根据ECMAScript5标准，八进制序列已经被废弃了并且不再会被使用。这样使用相当于冒着和最新的JavaScript引擎不兼容的危险。
 </p>
 <p>
-    The latest version of the specification contains the following note (<a href="http://es5.github.com/#B.1" target="_blank">ES5 B.1</a>):
+    最新的规范包含了以下内容(<a href="http://es5.github.com/#B.1" target="_blank">ES5 B.1</a>):
 </p>
 <blockquote>Past editions of ECMAScript have included additional syntax and semantics for specifying octal literals and octal escape sequences. These have been removed from this edition of ECMAScript.</blockquote>
 <p>
-    If you need to use an escape sequence, you can still use hexadecimal or unicode sequences. Both are still defined in ECMAScript 5 (<a href="http://es5.github.com/#A.1" target="_blank">ES5 A.1</a>):
+    如果你要使用转义字符序列，你仍可以使用16进制或者unicode的字符序列。两者都在ECMASCript5中被定义了(<a href="http://es5.github.com/#A.1" target="_blank">ES5 A.1</a>):
 </p>
 <blockquote><em>EscapeSequence</em> <span class="code">::</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<em>CharacterEscapeSequence</em><br>
@@ -31,12 +32,12 @@ var x = "Copyright \251";</textarea>
 &nbsp;&nbsp;&nbsp;&nbsp;<em>HexEscapeSequence</em><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<em>UnicodeEscapeSequence</em></blockquote>
 <p>
-    JSLint recommends that you use the unicode escape sequence over the hexadecimal equivalent. The reason for this is likely that unicode escape sequences can cover a vast range of characters compared to the 256 offered by hexadecimal sequences, and that the JSON specification only allows unicode escapes. Note that although they have different names, both hexadecimal and unicode escape sequences use hexadecimal numbers. Here's the above example again, using a unicode escape instead:
+    JSLint更建议你使用unicode而不是等价的16进制序列。这样做的原因是unicode的序列可以比16进制序列所提供的256个字符提供更多，并且JSON规范中只允许unicode转义。尽管他们的名字不同，两者都使用的是16进制数字。以下仍是上述的例子，但是使用的是unicode转义代替：
 </p>
 <textarea>
 var x = "Copyright \u00A9";</textarea>
 <p>
-    However, if you would rather use the hexadecimal escape sequence, JSLint will not throw any errors:
+    但是，如果你想要使用16进制转义，JSLint也不会抛出任何错误：
 </p>
 <textarea>
 var x = "Copyright \xA9";</textarea>
