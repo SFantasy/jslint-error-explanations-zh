@@ -1,14 +1,15 @@
---- 
+---
 title: "Octal literals are not allowed in strict mode"
 layout: post
 tags: jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSHint will throw the "Octal literals are not allowed in strict mode" error when it encounters <strong>a string literal that contains the escape character followed by a '0', followed by a digit between 0 and 7, in strict mode</strong>. In the following example we attempt to assign a string containing an octal escape to a variable <span class="code">x</span>:
+    JSHint在strict模式中遇到<strong>一个字符串字面量包含着以'0'开头的八进制转义字符串</strong>，会抛出"Octal literals are not allowed in strict mode"。在下面这个例子中我们尝试着将一个包含着八进制的字符串赋值给变量<span class="code">x</span>:
 </p>
 <textarea data-linter="JSHint">
 (function () {
@@ -16,19 +17,19 @@ author: jallardice
     var x = "\07";
 }());</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight <strong>the use of a deprecated language feature</strong>. As of version 5 of the ECMAScript specification, octal escape sequences are deprecated and should no longer be used. You run the risk of losing compatibility with newer JavaScript engines as support for this feature is gradually dropped.
+    这个错误是为了强调<strong>对废弃语言特性的使用</strong>。在ECMAScript5规范中，八进制序列被废弃并且不再会被使用。如果使用之，由于这个特性已经逐渐被抛弃，而使得与现有更新的JavaScript引擎不兼容。
 </p>
 <p>
-    This message is the equivalent of the "<a href="/dont-use-octal-a-use-instead">Don't use octal: '{a}'. Use '\\u...' instead</a>" message from JSLint. See that page for a more detailed discussion about the cause and solution for this error.
+    这个消息和JSLint中的"<a href="/dont-use-octal-a-use-instead">Don't use octal: '{a}'. Use '\\u...' instead</a>"等价。可以查阅那个页面来获取关于其起因和该错误的解决办法的更多的相关信息。
 </p>
 <p>
-    <h4>A small oversight in JSHint</h4>
+    <h4>JSHint的一个小疏忽</h4>
 </p>
 <p>
-    It seems that either this message was indented for a different situation, or that the message is just slightly misleading. The example above is a demonstration of an octal <em>escape sequence</em>, not an octal <em>literal</em> (<a href="http://es5.github.com/#B.1.1" target="_blank">ES5 Annex B.1.1</a>):
+    也许这个错误消息是为了一种不同的情况，当然也可能稍微有点误导人。上述例子是一个八进制<em>转义序列</em>的示例，而不是一个八进制<em>字面量</em>(<a href="http://es5.github.com/#B.1.1" target="_blank">ES5 Annex B.1.1</a>):
 </p>
 <blockquote><em>OctalIntegerLiteral</em> <span class="code">::</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code">0</span> <em>OctalDigit</em><br>
@@ -36,7 +37,7 @@ author: jallardice
 <em>OctalDigit</em> <span class="code">::</span> one of<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code">0 1 2 3 4 5 6 7</span></blockquote>
 <p>
-    The reason behind the message text is likely the fact that the V8 engine (and potentially others) do not differentiate the syntax error message for these two situations. However, it's worth bearing in mind that in this particular case, we are dealing with an octal escape sequence and not an octal literal. Also note that the use of an actual octal literal in strict mode does cause a syntax error, but causes JSHint (prior to version 1.0.0) to raise a different warning:
+    这个消息背后的原因可能是V8引擎（以及其他潜在的）并不区分这两种情况的语法错误消息。但是需要记住的是在这种特殊的情况下，我们要处理的是一个八进制转义序列而不是一个八进制字面量。所以只要记住在严格模式下使用八进制字面量会产生一个语法错误，但是会让JSHint(1.0.0版本之前)发出一个不同的警告：
 </p>
 <textarea data-linter="JSHint" data-file="jshint-r12.min.js">
 (function () {
@@ -44,5 +45,5 @@ author: jallardice
     var x = 07;
 }());</textarea>
 <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. The identifier of this warning is <strong>W115</strong>. This means you can tell JSHint to not issue this warning with the <code>/*jshint -W115 */</code> directive.
+    在JSHint1.0.0及以上版本中你可以通过一种<a href="http://jshint.com/docs/#options" target="_blank">特殊的选项语法</a>来忽略任意警告。这个警告的标示符是<strong>W115</strong>。也就意味着你可以通过<code>/*jshint -W115 */</code>告诉JSHint不再报告这个错误。
 </p>
