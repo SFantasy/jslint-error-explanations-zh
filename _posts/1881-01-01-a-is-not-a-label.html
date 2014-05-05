@@ -1,14 +1,15 @@
---- 
+---
 title: "'{a}' is not a label"
 layout: post
 tags: jslint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "'{a}' is not a label" error when it encounters <strong>a <span class="code">break</span> or <span class="code">continue</span> statement referencing a label that does not exist</strong>. In the following example we try to break out of a <span class="code">for</span> loop to the <span class="code">example</span> label:
+    JSLint在遇到<strong>一个<span class="code">break</span>或者<span class="code">continue</span>语句指向一个并不存在的标签</strong>时，会抛出"'{a}' is not a label"的错误。在下面这个例子中，我们尝试着跳出一个<span class="code">for</span>循环到<span class="code">example</span>标签：
 </p>
 <textarea>
 function labelExample() {
@@ -21,10 +22,10 @@ function labelExample() {
     }
 }</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>JavaScript syntax error</strong>. It is not valid to reference an identifier that does not appear in the label set of the enclosing statement. This is stated in the ECMAScript 5 specification (<a href="http://es5.github.com/#x12.7" target="_blank">section &sect;12.7</a> and <a href="http://es5.github.com/#x12.8" target="_blank">section &sect;12.8</a>):
+    这个错误是为了强调一个<strong>JavaScript语法错误</strong>。在循环语句中引用一个并不存在标示符是不合法的。这在ECMAScript5规范中是这样被陈述的(<a href="http://es5.github.com/#x12.7" target="_blank">section &sect;12.7</a> and <a href="http://es5.github.com/#x12.8" target="_blank">section &sect;12.8</a>):
 </p>
 <blockquote>
     A program is considered syntactically incorrect if...<br><br>
@@ -36,7 +37,7 @@ function labelExample() {
     </ul>
 </blockquote>
 <p>
-    In the snippet above, the <span class="code">for</span> statement has not been explicitly labelled, and therefore there is no label in its label set with the identifier <span class="code">example</span>. When the interpreter reaches the <span class="code">break</span> statement a syntax error will be thrown. This can be avoided by either removing the identifier from the <span class="code">break</span> statement:
+    在上述引用片段中，<span class="code">for</span>语句并没有被明确的标记，因此也没有任何标记被赋予<span class="code">example</span>标示。当解释器遇到<span class="code">break</span>语句的时候，就会抛出一个语法错误。这可以通过移除<span class="code">break</span>语句中的标示符来解决问题：
 </p>
 <textarea>
 function labelExample() {
@@ -49,7 +50,7 @@ function labelExample() {
     }
 }</textarea>
 <p>
-    Or adding a label with the correct identifer to the label set of the <span class="code">for</span> statement:
+    或者将正确的标示符添加到<span class="code">for</span>语句之前：
 </p>
 <textarea>
 function labelExample() {
