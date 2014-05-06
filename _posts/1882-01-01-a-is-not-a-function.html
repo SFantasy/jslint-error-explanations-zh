@@ -1,35 +1,36 @@
---- 
+---
 title: "'{a}' is not a function"
 layout: post
 tags: jslint jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint and JSHint will throw the "'{a}' is not a function" error when they encounter <strong>an attempt to invoke the <span class="code">Math</span> object as a function</strong>. JSLint is designed to also raise this error when it encounters an attempt to invoke the <span class="code">JSON</span> object as a function, although this functionality is currently non-functional. Here's an example:
+    JSLint和JSHint在遇到<strong>尝试将<span class="code">Math</span>对象作为函数调用</strong>的时候，会抛出"'{a}' is not a function"的错误。JSLint的这个错误是为了当其遇到将<span class="code">JSON</span>对象作为函数调用时而抛出错误设计的，尽管这个功能现在并不是很常见。以下是一个例子：
 </p>
 <textarea>
 var x = Math();</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight what is most likely a <strong>misunderstanding of the language</strong>. The <span class="code">Math</span> property of the global object is described in the specification as follows (<a href="http://es5.github.io/#x15.8" target="_blank">ES5 &sect;15.8</a>):
+    这个错误的抛出是为了强调<strong>对语言的误解</strong>。全局对象中的<span class="code">Math</span>属性在规范中是这样被描述的(<a href="http://es5.github.io/#x15.8" target="_blank">ES5 &sect;15.8</a>):
 </p>
 <blockquote>The Math object does not have a [[Construct]] internal property; it is not possible to use the Math object as a constructor with the <span class="code">new</span> operator.<br><br>
 The Math object does not have a [[Call]] internal property; it is not possible to invoke the Math object as a function.
 </blockquote>
 <p>
-	This makes it very clear that the <span class="code">Math</span> object cannot be invoked in the way you normally call a function or a constructor. Instead it is simply an object with a set of properties, some of which are functions.
+    这十分清楚的解释了<span class="code">Math</span>对象不能像正常的函数或者构造函数那样被调用。实际上它是一个拥有很多属性的对象，这些属性之中有很多是函数。
 </p>
 <p>
     <h3>JSLint bug alert!</h3>
 </p>
 <p>
-	The <span class="code">JSON</span> object is described by the spec in exactly the same way (see <a href="http://es5.github.io/#x15.12" target="_blank">ES5 &sect;15.12</a>), and JSLint contains code that is designed to raise this warning when it encounters attempted invocations of it. As of July 2013, there is a bug in JSLint that prevents warnings about the use of <span class="code">JSON</span> as a function. A <a href="https://github.com/douglascrockford/JSLint/pull/146" target="_blank">pull request</a> has been opened to fix this issue.
+    <span class="code">JSON</span>对象在规范中以相同的方式被描述(参见 <a href="http://es5.github.io/#x15.12" target="_blank">ES5 &sect;15.12</a>)，JSLint包含了报告将<span class="code">JSON</span>对象作为函数调用的警告。有一个<a href="https://github.com/douglascrockford/JSLint/pull/146" target="_blank">pull request</a>用来解决这个警告。
 </p>
 <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. The identifier of this warning is <strong>W063</strong>. This means you can tell JSHint to not issue this warning with the <code>/*jshint -W063 */</code> directive.
+    在JSHint1.0.0及以上版本中你可以通过一种<a href="http://jshint.com/docs/#options" target="_blank">特殊的选项语法</a>来忽略任意警告。这个警告的标示符是<strong>W063</strong>。也就意味着你可以通过<code>/*jshint -W063 */</code>告诉JSHint不再报告这个错误。
 </p>

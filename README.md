@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-49/108
+50/108
 
+* 2014-05-06 "'{a}' is not a function"
 * 2014-05-06 "'{a}' is not a statement label"
 * 2014-05-05 "'{a}' is not a label"
 * 2014-05-05 "Octal literals are not allowed in strict mode"
