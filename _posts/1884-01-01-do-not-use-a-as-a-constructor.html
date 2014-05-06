@@ -1,14 +1,15 @@
---- 
+---
 title: "Do not use {a} as a constructor"
 layout: post
 tags: jslint jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint and JSHint will throw the "Do not use {a} as a constructor" error when they encounter <strong>a call to <span class="code">String</span>, <span class="code">Number</span>, <span class="code">Boolean</span>, <span class="code">Math</span> or <span class="code">JSON</span> preceded by the <span class="code">new</span> operator</strong>. In the following example we attempt to assign some values to variables by invoking these functions as constructors:
+    JSLint和JSHint在遇到使用<strong><span class="code">new</span>操作符操作<span class="code">String</span>, <span class="code">Number</span>, <span class="code">Boolean</span>, <span class="code">Math</span>或<span class="code">JSON</span></strong>时会抛出"Do not use {a} as a constructor"的错误。在下面的例子中，我们尝试着将一些值或变量放入这些对象中以作为构造函数调用：
 </p>
 <textarea>
 var str = new String("hello"),
@@ -17,31 +18,31 @@ var str = new String("hello"),
     math = new Math(),
     json = new JSON({ myProp: 10 });</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>bad practice</strong> and a piece of code that may <strong>not work as you intend it to</strong>. It can also highlight a possible <strong>fatal JavaScript error</strong>. Your code could run without error if you do not change it, but could be confusing to other developers and could also behave in unexpected ways.
+    这个错误是为了强调<strong>不好的实践</strong>以及一些并不会像<strong>你所预期的那样运行</strong>的代码。同时也强调了一种可能的<strong>严重的JavaScript错误</strong>。若不修改之，你的代码可能也能正常运行，但是会让其他的开发者感到困惑，当然其表现也会让人无法预期。
 </p>
 <p>
-    The <span class="code">String</span>, <span class="code">Number</span> and <span class="code">Boolean</span> constructor functions return <em>objects</em> of type <span class="code">String</span>, <span class="code">Number</span> and <span class="code">Boolean</span>, which is rarely what you want. Usually, you want <em>literal</em> string, number or boolean values, because strictly comparing an object to a literal will always return <span class="code">false</span>.
+    <span class="code">String</span>, <span class="code">Number</span> and <span class="code">Boolean</span>的构造函数会返回<span class="code">String</span>, <span class="code">Number</span> and <span class="code">Boolean</span>类型的<em>对象</em>，而这往往不是你想要的。通常你需要字符串、数字或者布尔值的<em>字面量</em>，因为严格比较一个对象和一个字面量总是会返回<span class="code">false</span>。
 </p>
 <p>
-    In the case of these objects, to fix this error, use literal values rather than their corresponding wrapper objects:
+    为了防止这些对象并更改这个错误，使用字面量的值而非他们所对应的对象：
 </p>
 <textarea>
 var str = "hello",
     num = 10,
     bool = false;</textarea>
 <p>
-    Note that this does not cause you to lose any functionality, since literal values are internally cast to instances of the appropriate type when you call a method on them. Also note that you are free to use these functions to perform type conversions i.e. by invoking them without the <span class="code">new</span> operator:
+    值得注意的是，这并不会丢失任何的功效，因为当你调用他们的方法时，字面量的值会在内部转换成这些类型的实力。同时你可以自由使用这些函数来实现类型的转换。比如调用他们而并不使用<span class="code">new</span>操作符：
 </p>
 <textarea>
 var str = String(10);</textarea>
 <p>
-    The case is a little different for the <span class="code">Math</span> and <span class="code">JSON</span> objects. These two objects are not functions, and cannot be constructed. Attempts to instantiate them will result in a <span class="code">TypeError</span>. If you're trying to serialize an object into a JSON string, you need to use the <span class="code">JSON.stringify</span> method instead:
+    对于<span class="code">Math</span>和<span class="code">JSON</span>对象而言，转换还是有点不同的。这两个对象并不是函数，因此不能被构造。尝试着实例化他们的时候会导致一个<span class="code">TypeError</span>。如果你尝试着将一个对象序列化为一个JSON字符串，你需要使用<span class="code">JSON.stringfiy</span>方法代替之：
 </p>
 <textarea>
 var json = JSON.stringify({ myProp: 10 });</textarea>
 <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. The identifier of this warning is <strong>W053</strong>. This means you can tell JSHint to not issue this warning with the <code>/*jshint -W053 */</code> directive.
+    在JSHint1.0.0及以上版本中你可以通过一种<a href="http://jshint.com/docs/#options" target="_blank">特殊的选项语法</a>来忽略任意警告。这个警告的标示符是<strong>W053</strong>。也就意味着你可以通过<code>/*jshint -W053 */</code>告诉JSHint不再报告这个错误。
 </p>
