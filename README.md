@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-51/108
+52/108
 
+* 2014-05-08 "Missing name in function statement"
 * 2014-05-06 "Do not use {a} as a constructor"
 * 2014-05-06 "'{a}' is not a function"
 * 2014-05-06 "'{a}' is not a statement label"

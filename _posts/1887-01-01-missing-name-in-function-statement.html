@@ -1,27 +1,28 @@
---- 
+---
 title: "Missing name in function statement"
 layout: post
 tags: jslint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "Missing name in function statement" error when it encounters <strong>the <span class="code">function</span> keyword, where it would be parsed as a statement, followed immediately by an opening parenthesis</strong>. In the following example we attempt to define a function but forget to give it an identifier:
+    JSLint在遇到<strong><span class="code">function</span>关键词之后紧跟一堆括号，而此时应当被用作一个声明语句时</strong>，会抛出"Missing name in function statement"的错误。下面例子中，我们尝试着定义一个函数，但是没有给其函数名：
 </p>
 <textarea>
 function () {
     "use strict";
 }</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>JavaScript syntax error</strong>. Your code will not run unless you fix this issue.
+    这个错误是为了强调<strong>一个JavaScript语法错误</strong>。除非你更正了这个问题，否则你的代码是不会正常运行的。
 </p>
 <p>
-    The ECMAScript grammar states that a function statement (or <em>declaration</em>) has to have an identifier (<a href="http://es5.github.com/#x13" target="_blank">ES5 &sect;13</a>):
+    ECMAScript语法描述了一个函数语句（或者说<em>描述语句</em>）必须有一个标示符：(<a href="http://es5.github.com/#x13" target="_blank">ES5 &sect;13</a>):
 </p>
 <blockquote><em>FunctionDeclaration</em> <span class="code">:</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code">function</span> <em>Identifier</em> <span class="code">(</span> <em>FormalParameterList</em><sub>opt</sub><span class="code">)</span> <span class="code">{</span> <em>FunctionBody</em> <span class="code">}</span></blockquote>
@@ -31,7 +32,7 @@ function () {
 <blockquote><em>FunctionExpression</em> <span class="code">:</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code">function</span> <em>Identifier</em><sub>opt</sub> <span class="code">(</span> <em>FormalParameterList</em><sub>opt</sub><span class="code">)</span> <span class="code">{</span> <em>FunctionBody</em> <span class="code">}</span></blockquote>
 <p>
-    This time, notice that the identifier <em>is</em> optional. This optional identifier in function expressions is what makes it possible to create anonymous functions. However, in our example above, the code is parsed as a statement rather than an expression. To fix the issue, give the function an identifier:
+    这一次，注意标示符<em>是</em>可选的。这个可选的标示符在函数表达式中会让函数变成一个匿名函数。但是在我们上面的例子中，代码会被解析成一个语句而非表达式。为了解决这个问题，必须给这个函数一个标示符：
 </p>
 <textarea>
 function example() {
@@ -39,6 +40,7 @@ function example() {
 }</textarea>
 <p>
     Alternatively, make sure the code is parsed as an expression, rather than a statement. There are numerous way of doing this, but in our example the only one that really makes sense is to assign the anonymous function to a variable (don't forget the semi-colon):
+    当然，如果确定代码会被解析成一个表达式，而非一个语句。就有多种方法可以实现这种目的，但是在我们的例子中，真正起作用的是要把它作为成一个匿名函数赋值给一个变量（不要忘了分号）：
 </p>
 <textarea>
 var example = function () {
