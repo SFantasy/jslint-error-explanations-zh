@@ -3,7 +3,7 @@ JSLint Error Explanations zh-CN
 
 Origin repository [jslint-error-explanations](https://github.com/jamesallardice/jslint-error-explanations).
 
-这是**jslint-error-explanations** 的[中译版](http://jslint.fantasyshao.com).
+这是**jslint-error-explanations** 的[中译版](http://jslint.fantasy.codes).
 
 ## 翻译进度
 

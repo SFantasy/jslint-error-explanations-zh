@@ -1,27 +1,29 @@
---- 
+---
 title: "Move 'var' declarations to the top of the function"
 layout: post
 tags: jslint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "Move 'var' declarations to the top of the function" error when it encounters <strong>a variable declaration in a <span class="code">for</span> loop initialiser</strong>. Here's an example in which we have a simple <span class="code">for</span> loop that counts up to 10:
+    JSLint在遇到<strong>一个变量声明在了<span class="code">for</span>循环的初始化语句中</strong>。以下是一个简单的计数到10的<span class="code">for</span>循环语句：
 </p>
 <textarea>
 for (var i = 0; i < 10; i++) {
     // Do stuff
 }</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a possible <strong>misunderstanding of the language</strong>. Your code will most likely work as expected if you do not resolve this issue, but you may have misunderstood how JavaScript handles variable declarations.
+    这个错误是为了强调一种可能的<strong>对语言的误解</strong>。如果你不解决这个问题，你的代码可能会和期望的一样正常工作，但是你可能误解了JavaScript是如何处理变量声明的。
 </p>
 <p>
     All declarations are <em>hoisted</em> to the top of the scope in which they appear. Variables in JavaScript have function scope, not block scope. In many other languages, the variable <span class="code">i</span> in the above example would be scopes to the <span class="code">for</span> loop body and would not be accessible to the containing scope. In JavaScript, this is not the case and the variable is actually accessible in the containing scope, although it won't have a value until the loop initialiser has been executed.
+    所有的声明都会被<em>提升到</em>它们所出现的作用域的顶部。JavaScript中的变量只有函数作用域而没有块级作用域。在很多其他的语言中，变量<span class="code">i</span>在上述例子中，是属于<span class="code">for</span>循环体并且能够被其包含的作用域所访问到。在JavaScript中，
 </p>
 <p>
     To fix this issue, simply move the variable declaration out of the loop initialiser. This makes the code read the way it is actually interpreted:
