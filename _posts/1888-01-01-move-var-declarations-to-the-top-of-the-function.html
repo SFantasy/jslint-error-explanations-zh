@@ -22,11 +22,10 @@ for (var i = 0; i < 10; i++) {
     这个错误是为了强调一种可能的<strong>对语言的误解</strong>。如果你不解决这个问题，你的代码可能会和期望的一样正常工作，但是你可能误解了JavaScript是如何处理变量声明的。
 </p>
 <p>
-    All declarations are <em>hoisted</em> to the top of the scope in which they appear. Variables in JavaScript have function scope, not block scope. In many other languages, the variable <span class="code">i</span> in the above example would be scopes to the <span class="code">for</span> loop body and would not be accessible to the containing scope. In JavaScript, this is not the case and the variable is actually accessible in the containing scope, although it won't have a value until the loop initialiser has been executed.
-    所有的声明都会被<em>提升到</em>它们所出现的作用域的顶部。JavaScript中的变量只有函数作用域而没有块级作用域。在很多其他的语言中，变量<span class="code">i</span>在上述例子中，是属于<span class="code">for</span>循环体并且能够被其包含的作用域所访问到。在JavaScript中，
+    所有的声明都会被<em>提升到</em>它们所出现的作用域的顶部。JavaScript中的变量只有函数作用域而没有块级作用域。在很多其他的语言中，变量<span class="code">i</span>在上述例子中，是属于<span class="code">for</span>循环体并且能够被其包含的作用域所访问到。在JavaScript中，变量实际上在所属的作用域中都能被访问到，尽管它在直到循环初始化执行的时候才被赋值。
 </p>
 <p>
-    To fix this issue, simply move the variable declaration out of the loop initialiser. This makes the code read the way it is actually interpreted:
+    为了解决这个问题，可以简单的将变量声明放到循环体外面。这可以让代码与其被解析的时候是一样的。
 </p>
 <textarea>
 var i;
@@ -34,5 +33,5 @@ for (i = 0; i < 10; i += 1) {
     // Do stuff
 }</textarea>
 <p>
-    For more detailed information see the related message, "<a href="/combine-this-with-the-previous-var-statement">Combine this with the previous 'var' statement</a>".
+    更多相关的信息可以查阅相关的消息"<a href="/combine-this-with-the-previous-var-statement">Combine this with the previous 'var' statement</a>".
 </p>
