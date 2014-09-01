@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-54/108
+55/108
 
+* 2014-09-01 "Move the invocation into the parens that contain the function"
 * 2014-08-31 "Move 'var' declarations to the top of the function"
 * 2014-05-27 "Missing name in function declaration"
 * 2014-05-08 "Missing name in function statement"
