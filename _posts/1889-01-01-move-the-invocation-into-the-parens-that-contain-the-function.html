@@ -1,14 +1,15 @@
---- 
+---
 title: "Move the invocation into the parens that contain the function"
 layout: post
 tags: jslint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "Move the invocation into the parens that contain the function" error when it encounters <strong>an immediately invoked function expression in which the invoking parentheses appear outside the wrapping parentheses</strong>. In the following example we assign the <em>return value</em> of the anonymous function to the variable <span class="code">x</span>:
+    JSLint在遇到<strong>一个立即调用函数表达式的调用括号出现在包含这个函数的括号之外</strong>时，会抛出"Move the invocation into the parens that contain the function"的错误。在下面的例子中，我们将匿名函数的<em>返回值</em>赋给了变量<span class="code">x</span>:
 </p>
 <textarea>
 var x = (function () {
@@ -18,16 +19,16 @@ var x = (function () {
     };
 })();</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>lack of convention</strong>. Your code will not run without error if you do not change it, but your code may be confusing to others. However, this particular error gives rise to debate over which position for the invoking parentheses should actually be the convention. If you are using JSLint, then your convention should be the one suggested.
+    这个错误是为了强调一种<strong>规范的欠缺</strong>。若是不改动之，你的代码在运行的时候并不会有任何的错误。但是，这个对这个特别的错误可以对调用括号的位置进行讨论应当引起讨论。如果你在使用JSLint，那么你就需要按照其建议的来规范。
 </p>
 <p>
-    The argument for moving the parentheses is that it makes the code easier to understand. It may not be immediately obvious that the parentheses are intended to invoke the function if they are outside the wrapping pair. By moving them inside, they immediately follow the function statement and may therefore be more easily associated with it.
+    对于移动括号的争论的目的是让代码变得更容易理解。如果括号在包含函数体外部大括号外部，就不会立即被理解为是调用整个函数。将括号移动到内部，他们就紧接着函数语句，那么就会更容易与函数相联系。
 </p>
 <p>
-    To fix this error, simply move the pair of invoking parentheses inside the pair that wrap the function itself:
+    解决这个错误，可以简单的将调用的括号移动到包含函数的括号内：
 </p>
 <textarea>
 var x = (function () {
