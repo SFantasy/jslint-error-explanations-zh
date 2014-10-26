@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-56/108
+57/108
 
+* 2014-10-26 "Missing 'use strict' statement"
 * 2014-10-24 "Mixed double and single quotes"
 * 2014-09-01 "Move the invocation into the parens that contain the function"
 * 2014-08-31 "Move 'var' declarations to the top of the function"

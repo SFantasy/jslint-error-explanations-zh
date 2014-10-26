@@ -1,14 +1,15 @@
---- 
+---
 title: "Missing 'use strict' statement"
 layout: post
 tags: jslint jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSLint will throw the "Missing 'use strict' statement" error when it encounters <strong>a function that does not contain the strict mode directive, and none of whose ancestor scopes contain the strict mode directive</strong>. JSHint will throw this error in the same situation, but only when the <span class="code">strict</span> option is set to <span class="code">true</span>. Here's an example of a function that does not run in strict mode:
+    JSLint在遇到<strong>一个函数没有包含strict模式的声明，以及其祖先作用域中没有包含该声明</strong>时，会抛出"Missing 'use strict' statement"的错误。JSHint也会在相同情况下抛出错误，但是仅在<span class="code">strict</span>选项设置为<span class="code">true</span>的时候。以下是一个没有运行在strict模式下的函数：
 </p>
 <textarea>
 /*jshint strict: true */
@@ -16,19 +17,19 @@ function example() {
     var x = 10;
 }</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    The main reason this error is raised is to highlight a <strong>lack of convention</strong>. However, as JavaScript engines move forward, this error will increasingly be helpful as it should highlight areas of code that <strong>may not work as you expect them to</strong>, or may even cause fatal JavaScript errors.
+    这个错误抛出的主要原因是为了强调<strong>约定的缺失</strong>。但是随着JavaScript引擎的发展，这个错误会变得十分有用 -- 因为它会强调那些<strong>可能不会按照你所期望运行的</strong>代码区域，也许会产生一些致命的JavaScript错误。
 </p>
 <p>
-    A "use strict" statement is an example of a <em>directive</em>, which can appear as the first statement of a program or a function (<a href="http://es5.github.com/#x14.1" target="_blank">ES5 &sect;14.1</a>):
+    "use strict"语句是一种可行的<em>命令</em>，它可以出现在一个程序或者一个函数的第一个语句 (<a href="http://es5.github.com/#x14.1" target="_blank">ES5 &sect;14.1</a>):
 </p>
 <blockquote>A Directive Prologue is the longest sequence of <em>ExpressionStatement</em> productions occurring as the initial <em>SourceElement</em> productions of a <em>Program</em> or <em>FunctionBody</em> and where each <em>ExpressionStatement</em> in the sequence consists entirely of a <em>StringLiteral</em> token followed a semicolon. The semicolon may appear explicitly or may be inserted by automatic semicolon insertion. A Directive Prologue may be an empty sequence.</blockquote>
 <p>
-    The Use Strict directive can be used to force the engine to conform to a strict subset of the language, as defined in <a href="http://es5.github.com/#C" target="_blank">ES5 Annex C</a>. It has become something of a convention to run all JavaScript code in strict mode, to avoid falling into traps that are apparent in the non-strict language. See the previous link or the corresponding <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode" target="_blank">MDN article</a> for the details of the differences in strict mode.
+    使用严格模式的命令可以让引擎遵循一个严格的语言子集，定义在 <a href="http://es5.github.com/#C" target="_blank">ES5 Annex C</a>中。 对所有的JavaScript代码使用严格模式正在变成一种约定俗成，这也是为了防止掉入非严格模式下的语言陷阱。查阅相应的<a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode" target="_blank">MDN文章</a>以获取更多的在严格模式下的不同之处。
 <p>
-    You can fix this error by simply adding a Use Strict directive to the function, or to an ancestor function:
+    解决这个错误，你可以对函数或者其祖先函数添加使用严格模式的命令：
 </p>
 <textarea>
 /*jshint strict: true */
@@ -37,5 +38,5 @@ function example() {
     var x = 10;
 }</textarea>
 <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. This message is treated as an error by JSHint which means you are unable to prevent it from being issued.
+    在JSHint1.0.0以及以上版本中，你可以通过一种<a href="http://jshint.com/docs/#options" target="_blank">特殊的语法选项</a>来忽略其警告。但是这个消息在JShint中被当做一个错误，也就意味着你无法在让其不显示。
 </p>
