@@ -1,22 +1,23 @@
---- 
+---
 title: "Missing '()' invoking a constructor"
 layout: post
 tags: jshint
 author: jallardice
+translator: fantasyshao
 ---
 <p>
-    <h3>When do I get this error?</h3>
+    <h3>什么时候会产生这个错误？</h3>
 </p>
 <p>
-    JSHint will throw the "Missing '()' invoking a constructor" error when it encounters <strong>a <span class="code">new</span> expression that is not immediately followed by a pair of parentheses</strong>. In the following example we create an instance of the built-in <span class="code">Date</span> constructor:
+    JSHint在遇到<strong>一个<span class="code">new</span>表达式后没有紧随一对括号</strong>时，会抛出"Missing '()' invoking a constructor"的错误。以下例子中，我们创建了一个内置的<span class="code">Date</span>构造函数：
 </p>
 <textarea data-linter="JSHint">
 var d = new Date;</textarea>
 <p>
-    <h3>Why do I get this error?</h3>
+    <h3>为什么会产生这个错误？</h3>
 </p>
 <p>
-    This error is raised to highlight a <strong>lack of convention</strong>. Your code will work without error if you do not resolve this issue but you may be contravening coding styles and best practices. The ECMAScript 5 specification shows that <span class="code">new</span> expressions do not have to be followed by a pair of parentheses. The parentheses are only required when arguments are being passed to the constructor (<a href="http://es5.github.com/#x11.2" target="_blank">ES5 &sect;11.2</a>):
+    这个错误的提出是为了强调一种<strong>约定的缺失</strong>。如果不解决这个错误你的代码可以正常运行，但是你却违背了代码规范和最佳实践。在ECMAScript5的规范告诉我们<span class="code">new</span>表达式并不需要紧随一对括号。唯一必须要括号的情况是，构造函数中传递了参数 (<a href="http://es5.github.com/#x11.2" target="_blank">ES5 &sect;11.2</a>):
 </p>
 <blockquote>
 <em>MemberExpression</em> :<br>
@@ -29,10 +30,10 @@ var d = new Date;</textarea>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code">( )</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="code">(</span> <em>ArgumentList</em> <span class="code">)</span></blockquote>
 <p>
-    The grammar can be a bit confusing, but in essence the above shows that the <em>Arguments</em> nonterminal is optional. If you do not need to pass arguments to the constructor you can leave it out. However, many style guides would recommend that the parentheses are always included for consistency, and to make it immediately clear that an invocation is taking place.
+    语法可能会有一点让人感到疑惑，但是本质上而言根据上面提到的内容，无结尾的<em>Arguments</em>是可选的。如果你并不需要向构造函数传递任何参数，你可以不添加括号。但是很多代码规范会为了保持代码的统一性而推荐使用括号，而且这样可以更清楚的看到调用了构造函数。
 </p>
 <p>
-    Consider the fact that omitting the parentheses from a normal (non-constructor) function invocation will cause the expression to evaluate to a reference to that function, rather than the return value of it. By missing the parentheses on a constructor call your code may be less self-explanatory. To fix the issue you can simply add the missing parentheses:
+    考虑到普通函数（非构造）缺少括号会使得表达式会直接计算该函数的引用，而不是其返回值。而在构造函数处缺少了括号你的代码就会变得缺少自我理解。解决这个问题你可以简单的添加缺少的括号：
 </p>
 <textarea data-linter="JSHint">
 var d = new Date();</textarea>
@@ -40,5 +41,5 @@ var d = new Date();</textarea>
     There is no standard option to surpress this message. Note that JSLint also raises a warning in this situation, but it uses a more generic "Missing '{a}'" message which is used in several places.
 </p>
 <p class="standout">
-    In JSHint 1.0.0 and above you have the ability to ignore any warning with a <a href="http://jshint.com/docs/#options" target="_blank">special option syntax</a>. The identifier of this warning is <strong>W058</strong>. This means you can tell JSHint to not issue this warning with the <code>/*jshint -W058 */</code> directive.
+    在JSHint1.0.0及以上版本中，你可以通过一种<a href="http://jshint.com/docs/#options" target="_blank">特殊的语法选项</a>来忽略这个警告。这个警告的标示符是<strong>W058</strong>。也就意味着你可以通过<code>/*jshint -W058 */</code>来告诉JSHint不报告这个错误。
 </p>

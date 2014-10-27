@@ -7,8 +7,9 @@ Origin repository [jslint-error-explanations](https://github.com/jamesallardice/
 
 ## 翻译进度
 
-57/108
+58/108
 
+* 2014-10-27 "Missing '()' invoking a constructor"
 * 2014-10-26 "Missing 'use strict' statement"
 * 2014-10-24 "Mixed double and single quotes"
 * 2014-09-01 "Move the invocation into the parens that contain the function"
