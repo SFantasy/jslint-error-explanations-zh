@@ -1,6 +1,12 @@
 JSLint Error Explanations zh-CN
 ===============================
 
+**DEPRECATED** 
+
+如需对 JavaScript 代码做检查，推荐你使用 http://eslint.org/
+
+---
+
 Origin repository [jslint-error-explanations](https://github.com/jamesallardice/jslint-error-explanations).
 
 这是**jslint-error-explanations** 的[中译版](http://jslint.fantasy.codes).
